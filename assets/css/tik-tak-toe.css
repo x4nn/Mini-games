@@ -1,0 +1,208 @@
+@keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+
+body {
+    background-color: rgb(14, 14, 58);
+    width: 100%;
+}
+
+header {
+    width: 30%;
+    margin: 5rem auto 0 auto;
+
+    border-bottom: 0.1rem solid yellow;
+
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 3rem;
+}
+
+img[alt='back']{
+    height: 1rem;
+    margin-left: 0.5rem;
+}
+
+img, h1 {
+    margin-bottom: 0.3rem;
+}
+
+h1 {
+    color: yellow;
+    font-size: 2rem;
+    text-align: center;
+
+    margin-left: 9.5rem;
+}
+
+h2 {
+    color: yellow;
+    font-size: 3rem;
+
+    margin-bottom: 4rem;
+
+    animation: scale 0.5s infinite;
+}
+
+main {
+    width: 27.2%;
+    height: 26.1rem;
+    /*outline: 0.1rem solid red;*/
+
+    margin: auto auto;
+    padding: 1rem;
+}
+
+footer {
+    width: 27.2%;
+    margin: 12rem auto 0 auto;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: rgb(14, 14, 58);
+
+    background-color: yellow;
+    border-radius: 1rem;
+
+    margin: 3rem;
+    padding: 1rem;
+}
+
+footer a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: yellow;
+
+    background-color: rgb(14, 14, 58);
+    outline: 0.2rem solid yellow;
+    border-radius: 1rem;
+
+    margin: 3rem;
+    padding: 1rem;
+}
+
+#curPlayer {
+    color: yellow; 
+    font-size: 3rem; 
+    text-align: center;
+
+    margin-bottom: 5rem;
+}
+
+section {
+    /*outline: 0.1rem dotted greenyellow;*/
+
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 7.5rem);
+    grid-template-rows: repeat(3, 7.5rem);
+    grid-gap: 0rem;
+    justify-content: space-around;
+    align-content: space-around;
+
+    background-image: url(../media/tik-tak-toe/board.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+div[data-idx="0"]{
+    width: 114%;
+    height: 113%;
+
+    margin-top: -0.5rem;
+    margin-left: -0.5rem;
+}
+div[data-idx="1"]{
+    width: 102%;
+    height: 113%;
+
+    margin-top: -0.5rem;
+    margin-left: -0.1rem;
+}
+div[data-idx="2"]{
+    width: 113%;
+    height: 113%;
+
+    margin-top: -0.5rem;
+    margin-left: -0.5rem;
+}
+div[data-idx="3"]{
+    width: 114%;
+
+    margin-top: -0.1rem;
+    margin-left: -0.5rem;
+}
+div[data-idx="4"]{
+    width: 103%;
+
+    margin-top: -0.1rem;
+    margin-left: -0.1rem;
+}
+div[data-idx="5"]{
+    width: 113%;
+    height: 102%;
+
+    margin-top: -0.1rem;
+    margin-left: -0.5rem;
+}
+div[data-idx="6"]{
+    width: 114%;
+    height: 112.5%;
+
+    margin-top: -0.6rem;
+    margin-left: -0.5rem;
+}
+div[data-idx="7"]{
+    width: 102.5%;
+    height: 112%;
+
+    margin-top: -0.55rem;
+    margin-left: -0.1rem;
+}
+div[data-idx="8"]{
+    width: 114%;
+    height: 112%;
+
+    margin-top: -0.55rem;
+    margin-left: -0.55rem;
+}
+/*-------------------------------------------------------------------------------------*/
+
+.X {
+    background-image: url(../media/tik-tak-toe/X.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 70%;
+}
+
+.O {
+    background-image: url(../media/tik-tak-toe/O.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: 80%;
+}
