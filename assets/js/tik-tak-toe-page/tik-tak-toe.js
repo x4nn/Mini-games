@@ -14,10 +14,6 @@ function setupNewGame(){
 }
 
 function bindEevents() {
-    document.querySelector('img[alt="back"]').addEventListener('click', e => {
-        window.location.href = 'index.html';
-    })
-
     document.querySelectorAll('div').forEach($div => {
         $div.addEventListener('click', move);
     });

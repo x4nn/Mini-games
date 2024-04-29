@@ -26,8 +26,12 @@ function move(e){
         switchMovingPlayer();
         setTimeout(gameOver, 200);
     }
+    if (boardIsFull()){
+        switchMovingPlayer(true);
+        gameOver();
+    }
     
-}
+}//todo fix bug wanneer de laatste zet de winnende zet is
 
 function renderCurrentPlayer(){
     const player = getMovingPlayer();
@@ -65,11 +69,6 @@ function addToBoard(i, j){
 }
 
 function updateWinner(){
-    if (boardIsFull()){
-        switchMovingPlayer(true);
-        gameOver();
-    }
-
     checkHorizontal();
     checkVertical();
     checkDiagonal();
