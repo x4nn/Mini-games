@@ -235,7 +235,7 @@ div[data-idx="8"] {
         color: rgb(14, 14, 58);
         background-color: yellow;
         border-radius: 1rem;
-        margin: -7rem -6rem -7rem -9rem;
+        margin: -7rem 1rem -7rem 0.5rem;
         padding: 1rem;
     }
 

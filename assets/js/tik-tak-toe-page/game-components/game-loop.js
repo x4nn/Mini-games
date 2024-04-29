@@ -7,22 +7,23 @@ const BOARD = [
     [null, null, null]
 ];
 
-
 function move(e){
     const movingPlayer = getMovingPlayer();
+    console.log(movingPlayer);
 
     if (clickedOnEmptySquare(e.target)){
         renderLetter(e.target, getLetterClass(movingPlayer));
         updateBoard(e.target.dataset.idx);
         updateWinner();
 
-        switchMovingPlayer();
+        switchMovingPlayer(false);
         renderCurrentPlayer();
     }
     if (WINNER !== null){
         document.querySelectorAll('div').forEach($div => {
             $div.removeEventListener('click', move);
         });
+        switchMovingPlayer();
         setTimeout(gameOver, 200);
     }
     
@@ -64,6 +65,11 @@ function addToBoard(i, j){
 }
 
 function updateWinner(){
+    if (boardIsFull()){
+        switchMovingPlayer(true);
+        gameOver();
+    }
+
     checkHorizontal();
     checkVertical();
     checkDiagonal();
@@ -98,7 +104,6 @@ function oWonHorizontal(count){
     return count === 3;
 }
 
-
 function checkVertical(){
     for (let i = 0; i < BOARD.length; i++) {
         if (checkColumns(i)) {
@@ -111,7 +116,6 @@ function checkColumns(i){
     return BOARD[0][i] === BOARD[1][i] && BOARD[1][i] === BOARD[2][i] && BOARD[0][i] !== null;
 }
 
-
 function checkDiagonal(){
     for (let i = 0; i < BOARD.length; i++) {
         if (checkDiagonals()) {
@@ -122,6 +126,20 @@ function checkDiagonal(){
 
 function checkDiagonals(){
     return ((BOARD[0][0] === BOARD[1][1] && BOARD[1][1] === BOARD[2][2]) ||(BOARD[0][2] === BOARD[1][1] && BOARD[1][1] === BOARD[2][0])) && BOARD[1][1] !== null;
+}
+
+function boardIsFull(){
+    let filledSquares = 0;
+
+    for (const row of BOARD) {
+        for (const col of row) {
+            if (col){
+                filledSquares++;
+            }
+        }
+    }
+
+    return filledSquares === 9;
 }
 
 function gameOver(){
