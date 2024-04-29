@@ -23,6 +23,12 @@ body {
     width: 100%;
 }
 
+#version {
+    color: white;
+
+    margin: 1rem;
+}
+
 #theme {
     position: absolute;
     top: 0;
