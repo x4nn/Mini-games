@@ -6,6 +6,7 @@ The goal of this project is to have a page full of mini games that you can play.
 >
 > - `1.0:` TikTakToe finished (not yet polished) + made responive for phone (hopefully)
 > - `1.1:` TikTakToe responsive for bigger phones
+> - `1.2:` no scroll
  
 > ### GAMES
 >
