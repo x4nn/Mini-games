@@ -9,6 +9,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `1.2:` no scroll
 > - `1.3:` changed board completely, no image anymore, only borders
 > - `1.4:` changed back button and some things for hopefully better responsivness
+> - `1.5:` more responsive
  
 > ### GAMES
 >

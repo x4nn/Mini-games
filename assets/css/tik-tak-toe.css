@@ -154,10 +154,17 @@ div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[
 
     header {
         width: 50%;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
     }
 
     main {
         width: 80%;
+    }
+
+    #curPlayer {
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
     footer {
@@ -182,7 +189,7 @@ div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[
     }
 
     section {
-        height: 70%;
+        height: 47%;
 
         display: grid;
         grid-template-columns: repeat(3, 5.5rem);
@@ -191,6 +198,8 @@ div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[
 
     #back-button {
         padding: 1rem 5rem;
+
+        margin-top: 0;
     }
 
     div[data-idx="0"], div[data-idx="1"], div[data-idx="3"], div[data-idx="4"], div[data-idx="6"], div[data-idx="7"]{
