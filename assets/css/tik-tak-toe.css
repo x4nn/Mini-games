@@ -250,7 +250,6 @@ div[data-idx="8"] {
     h2 {
         color: yellow;
         font-size: 2rem;
-        margin-bottom: 4rem;
         margin: 0 auto 3rem auto;
         animation: scale 0.5s infinite;
     }
