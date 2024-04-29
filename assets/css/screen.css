@@ -21,6 +21,8 @@
 body {
     background-color: rgb(14, 14, 58);
     width: 100%;
+
+    overflow: hidden;
 }
 
 #version {
