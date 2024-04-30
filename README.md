@@ -13,7 +13,7 @@ The goal of this project is to have a page full of mini games that you can play.
  
 > ### GAMES
 >
-> - tik-tak-toe => DONE (`maybe add player name chooser`)
+> - tik-tak-toe
 > - memory
 > - hangman
 > - woordzoeker
@@ -24,3 +24,8 @@ The goal of this project is to have a page full of mini games that you can play.
 
 > ### Extra features
 > - dark/light mode
+
+> ### Tik Tak Toe
+> ## To add
+> - Line when winner
+> - choosing a name per player

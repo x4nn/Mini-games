@@ -9,7 +9,6 @@ const BOARD = [
 
 function move(e){
     const movingPlayer = getMovingPlayer();
-    console.log(movingPlayer);
 
     if (clickedOnEmptySquare(e.target)){
         renderLetter(e.target, getLetterClass(movingPlayer));
@@ -19,13 +18,16 @@ function move(e){
         switchMovingPlayer(false);
         renderCurrentPlayer();
     }
+
     if (WINNER !== null){
         document.querySelectorAll('div').forEach($div => {
             $div.removeEventListener('click', move);
         });
         switchMovingPlayer();
-        setTimeout(gameOver, 200);
+        showWinnigLine();
+        setTimeout(gameOver, 500);
     }
+
     if (boardIsFull()){
         switchMovingPlayer(true);
         gameOver();
@@ -107,6 +109,7 @@ function checkVertical(){
     for (let i = 0; i < BOARD.length; i++) {
         if (checkColumns(i)) {
             WINNER = getMovingPlayer();
+            markVerticalWinningSquares(i);
         }
     }
 }
@@ -127,6 +130,14 @@ function checkDiagonals(){
     return ((BOARD[0][0] === BOARD[1][1] && BOARD[1][1] === BOARD[2][2]) ||(BOARD[0][2] === BOARD[1][1] && BOARD[1][1] === BOARD[2][0])) && BOARD[1][1] !== null;
 }
 
+function markVerticalWinningSquares(i){
+    const $allSquares = document.querySelectorAll('div');
+    
+    $allSquares[i].classList.add('win');
+    $allSquares[i+3].classList.add('win');
+    $allSquares[i+6].classList.add('win');
+}
+
 function boardIsFull(){
     let filledSquares = 0;
 
@@ -139,6 +150,14 @@ function boardIsFull(){
     }
 
     return filledSquares === 9;
+}
+
+function showWinnigLine(){
+    const winningDivs = getWinnigDivs();
+}
+
+function getWinnigDivs(){
+
 }
 
 function gameOver(){
