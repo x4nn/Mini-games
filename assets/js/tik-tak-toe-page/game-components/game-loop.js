@@ -26,9 +26,7 @@ function move(e) {
         });
         switchMovingPlayer();
         setTimeout(gameOver, 1750);
-    }
-
-    if (boardIsFull()) {
+    } else if (boardIsFull()) {
         switchMovingPlayer(true);
         gameOver();
     }
@@ -154,7 +152,7 @@ function markHorizontalWin(i) {
 }
 
 function markDiagonalWin(i) {
-    const $line = document.querySelector('img.hidden');
+    const $line = document.querySelector('img');
 
     $line.classList.remove('hidden');
 
@@ -188,6 +186,7 @@ function gameOver() {
     document.querySelector('.board').style.filter = 'blur(2px)';
 
     const board = document.querySelector('section');
+    board.classList.add('gameover');
     document.querySelector('footer').insertAdjacentHTML("afterbegin", board.outerHTML)
 }
 

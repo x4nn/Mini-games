@@ -14,11 +14,10 @@
 
 body {
     background-color: rgb(14, 14, 58);
-    
+
     width: 100%;
 
     overflow: hidden;
-
 }
 
 header {
@@ -28,14 +27,6 @@ header {
     border-bottom: 0.1rem solid yellow;
 
     margin-bottom: 3rem;
-
-    
-    /* filter: blur(3px); */
-}
-
-img[alt='back'] {
-    height: 1rem;
-    margin-left: 0.5rem;
 }
 
 h1 {
@@ -115,6 +106,7 @@ section {
     grid-template-rows: repeat(3, 8rem);
 
     padding: 1rem;
+    margin: 0 auto;
     margin-bottom: 2rem;
 }
 
@@ -174,14 +166,6 @@ div[data-idx="5"] {
 .board div {
     z-index: 0;
     padding: 2.5rem 0;
-}
-
-footer div {
-    /* margin-bottom: -5rem; */
-}
-
-img {
-    /* filter: blur(3px); */
 }
 
 /*-------------Horizontal--------------*/
@@ -282,6 +266,7 @@ img {
 
     footer {
         width: 90%;
+        margin-top: 2rem;
     }
 
     footer a {
@@ -310,27 +295,87 @@ img {
         grid-template-rows: repeat(3, 5.5rem);
     }
 
+    .gameover {
+        margin-top: 0rem;
+    }
+
     #back-button {
         padding: 1rem 5rem;
 
         margin-top: 0;
     }
 
-    div[data-idx="0"],
-    div[data-idx="1"],
-    div[data-idx="3"],
-    div[data-idx="4"],
-    div[data-idx="6"],
-    div[data-idx="7"] {
-        border-right: purple 0.3rem solid;
+    /*-------------Horizontal--------------*/
+    .winHor0 {
+        position: relative;
+        z-index: 500;
+        width: 82%;
+        margin: -20.5rem auto 0 auto;
+        margin-top: -20rem;
     }
 
-    div[data-idx="0"],
-    div[data-idx="1"],
-    div[data-idx="2"],
-    div[data-idx="3"],
-    div[data-idx="4"],
-    div[data-idx="5"] {
-        border-bottom: purple 0.3rem solid;
+    .winHor1 {
+        position: relative;
+        z-index: 500;
+        width: 82%;
+        margin: -20.5rem auto 0 auto;
+        margin-top: -14.5rem;
     }
+
+    .winHor2 {
+        position: relative;
+        z-index: 500;
+        width: 82%;
+        margin: -20.5rem auto 0 auto;
+        margin-top: -8.85rem;
+    }
+
+    /*--------------Vertical---------------*/
+    .winVer0 {
+        position: relative;
+        z-index: 500;
+        width: 82%;
+        margin-left: -3.55rem;
+        margin-top: -14.5rem;
+        rotate: 90deg;
+    }
+
+    .winVer1 {
+        position: relative;
+        z-index: 500;
+        width: 82%;
+        margin-left: 1.9rem;
+        margin-top: -14.5rem;
+        rotate: 90deg;
+    }
+
+    .winVer2 {
+        position: relative;
+        z-index: 500;
+        width: 82%;
+        margin-left: 7.6rem;
+        margin-top: -14.5rem;
+        rotate: 90deg;
+    }
+
+    /*--------------Diagonal-------------*/
+    .winDiaLeft {
+        position: relative;
+        z-index: 500;
+        width: 96%;
+        margin-left: 0.3rem;
+        margin-top: -14.5rem;
+        rotate: 45deg;
+    }
+
+    .winDiaRight {
+        position: relative;
+        z-index: 500;
+        width: 96%;
+        margin-left: 0.3rem;
+        margin-top: -14.5rem;
+        rotate: -44.5deg;
+    }
+
+    /*-------------------------------------*/
 }
