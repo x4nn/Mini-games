@@ -89,8 +89,10 @@ function checkHorizontal(){
             }
 
             if (xWonHorizontal(xCounter)) {
+                markHorizontalWin(i);
                 WINNER = 'p1';
             } else if (oWonHorizontal(oCounter)) {
+                markHorizontalWin(i);
                 WINNER = 'p2';
             }
         }
@@ -136,6 +138,18 @@ function markVerticalWinningSquares(i){
     $allSquares[i].classList.add('win');
     $allSquares[i+3].classList.add('win');
     $allSquares[i+6].classList.add('win');
+}
+
+function markHorizontalWin(i){
+    const $allSquares = document.querySelectorAll('div');
+
+    $allSquares[i*3].classList.add('win');
+    $allSquares[i*3+1].classList.add('win');
+    $allSquares[i*3+2].classList.add('win');
+}
+
+function markDiagonalWin(){
+    
 }
 
 function boardIsFull(){
