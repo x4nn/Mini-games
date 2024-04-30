@@ -24,7 +24,7 @@ function move(e) {
             $div.removeEventListener('click', move);
         });
         switchMovingPlayer();
-        setTimeout(gameOver, 500);
+        setTimeout(gameOver, 1750);
     }
 
     if (boardIsFull()) {

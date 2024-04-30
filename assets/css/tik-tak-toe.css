@@ -150,6 +150,11 @@ div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[
     background-position-y: center;
     background-size: 62%;
 }
+
+.win {
+    background-color: red;
+}
+
 @media screen and (max-width: 768px) {/*PHONE*/
 
     header {
