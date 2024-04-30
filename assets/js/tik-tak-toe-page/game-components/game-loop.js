@@ -181,10 +181,14 @@ function boardIsFull() {
 }
 
 function gameOver() {
-    document.querySelector('#winner').innerHTML = getMovingPlayer();
-
     document.querySelector('main').classList.add('hidden');
     document.querySelector('footer').classList.remove('hidden');
+
+    document.querySelector('header').style.filter = 'blur(3px)';
+    document.querySelector('.board').style.filter = 'blur(2px)';
+
+    const board = document.querySelector('section');
+    document.querySelector('footer').insertAdjacentHTML("afterbegin", board.outerHTML)
 }
 
 export { move };

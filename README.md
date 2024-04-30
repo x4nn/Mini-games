@@ -12,6 +12,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `1.5:` more responsive
 > - `1.6:` winning line indication added
 > - `1.6.1:` line instead of background
+> - `1.7:` new game over screen
  
 > ### GAMES
 >

@@ -14,9 +14,11 @@
 
 body {
     background-color: rgb(14, 14, 58);
+    
     width: 100%;
 
     overflow: hidden;
+
 }
 
 header {
@@ -26,6 +28,9 @@ header {
     border-bottom: 0.1rem solid yellow;
 
     margin-bottom: 3rem;
+
+    
+    /* filter: blur(3px); */
 }
 
 img[alt='back'] {
@@ -59,12 +64,17 @@ main {
 }
 
 footer {
+
+    display: grid;
+
     width: 27.2%;
-    margin: 12rem auto 0 auto;
+    height: 49vh;
+    margin: 5rem auto 0 auto;
     text-align: center;
 }
 
 footer a {
+
     text-decoration: none;
     font-weight: bold;
     font-size: 1.3rem;
@@ -73,7 +83,7 @@ footer a {
     background-color: yellow;
     border-radius: 1rem;
 
-    margin: 3rem;
+    margin: 3rem 3rem 3rem 3rem;
     padding: 1rem;
 }
 
@@ -125,11 +135,21 @@ section {
     display: none;
 }
 
-div[data-idx="0"], div[data-idx="1"], div[data-idx="3"], div[data-idx="4"], div[data-idx="6"], div[data-idx="7"]{
+div[data-idx="0"],
+div[data-idx="1"],
+div[data-idx="3"],
+div[data-idx="4"],
+div[data-idx="6"],
+div[data-idx="7"] {
     border-right: yellow 0.3rem solid;
 }
 
-div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[data-idx="4"], div[data-idx="5"]{
+div[data-idx="0"],
+div[data-idx="1"],
+div[data-idx="2"],
+div[data-idx="3"],
+div[data-idx="4"],
+div[data-idx="5"] {
     border-bottom: yellow 0.3rem solid;
 }
 
@@ -151,30 +171,42 @@ div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[
     background-size: 62%;
 }
 
-div {
+.board div {
     z-index: 0;
+    padding: 2.5rem 0;
+}
+
+footer div {
+    /* margin-bottom: -5rem; */
+}
+
+img {
+    /* filter: blur(3px); */
 }
 
 /*-------------Horizontal--------------*/
 .winHor0 {
     position: relative;
     z-index: 500;
-    width: 100%;
-    margin-bottom: -6.5rem;
+    width: 110%;
+    margin-left: -1.6rem;
+    margin-top: -24.5rem;
 }
 
 .winHor1 {
     position: relative;
     z-index: 500;
-    width: 100%;
-    margin-bottom: -14.3rem;
+    width: 110%;
+    margin-left: -1.6rem;
+    margin-top: -16.5rem;
 }
 
 .winHor2 {
     position: relative;
     z-index: 500;
-    width: 100%;
-    margin-bottom: -22rem;
+    width: 110%;
+    margin-left: -1.6rem;
+    margin-top: -8.5rem;
 }
 
 /*--------------Vertical---------------*/
@@ -182,8 +214,8 @@ div {
     position: relative;
     z-index: 500;
     width: 110%;
-    margin-left: -14.6rem;
-    margin-bottom: -14.5rem;
+    margin-left: -9.45rem;
+    margin-top: -17rem;
     rotate: 90deg;
 }
 
@@ -191,8 +223,8 @@ div {
     position: relative;
     z-index: 500;
     width: 110%;
-    margin-left: -1.3rem;
-    margin-bottom: -14.5rem;
+    margin-left: -1.45rem;
+    margin-top: -17rem;
     rotate: 90deg;
 }
 
@@ -200,36 +232,38 @@ div {
     position: relative;
     z-index: 500;
     width: 110%;
-    margin-left: 6.3rem;
-    margin-bottom: -14.5rem;
+    margin-left: 6.75rem;
+    margin-top: -17rem;
     rotate: 90deg;
 }
 
 /*--------------Diagonal-------------*/
-.winDiaLeft{
+.winDiaLeft {
     position: relative;
     z-index: 500;
-    width: 128%;
-    margin-left: -3.5rem;
-    margin-bottom: -14.5rem;
-    rotate: 46deg;
+    width: 134%;
+    margin-left: -4.45rem;
+    margin-top: -17rem;
+    rotate: 44.5deg;
 }
 
-.winDiaRight{
+.winDiaRight {
     position: relative;
     z-index: 500;
-    width: 128%;
-    margin-left: -3.5rem;
-    margin-bottom: -14.5rem;
-    rotate: -47deg;
+    width: 134%;
+    margin-left: -4.45rem;
+    margin-top: -17rem;
+    rotate: -44.5deg;
 }
+
 /*-------------------------------------*/
 
-div {
+/* div {
     padding: 2.5rem 0;
-}
+} */
 
-@media screen and (max-width: 768px) {/*PHONE*/
+@media screen and (max-width: 768px) {
+    /*PHONE*/
 
     header {
         width: 50%;
@@ -250,7 +284,8 @@ div {
         width: 90%;
     }
 
-    footer a {/*buttons*/
+    footer a {
+        /*buttons*/
         text-decoration: none;
         font-weight: bold;
         color: rgb(14, 14, 58);
@@ -281,11 +316,21 @@ div {
         margin-top: 0;
     }
 
-    div[data-idx="0"], div[data-idx="1"], div[data-idx="3"], div[data-idx="4"], div[data-idx="6"], div[data-idx="7"]{
+    div[data-idx="0"],
+    div[data-idx="1"],
+    div[data-idx="3"],
+    div[data-idx="4"],
+    div[data-idx="6"],
+    div[data-idx="7"] {
         border-right: purple 0.3rem solid;
     }
-    
-    div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[data-idx="4"], div[data-idx="5"]{
+
+    div[data-idx="0"],
+    div[data-idx="1"],
+    div[data-idx="2"],
+    div[data-idx="3"],
+    div[data-idx="4"],
+    div[data-idx="5"] {
         border-bottom: purple 0.3rem solid;
     }
 }
