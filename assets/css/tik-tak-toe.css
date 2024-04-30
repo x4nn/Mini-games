@@ -151,8 +151,82 @@ div[data-idx="0"], div[data-idx="1"], div[data-idx="2"], div[data-idx="3"], div[
     background-size: 62%;
 }
 
-.win {
-    background-color: red;
+div {
+    z-index: 0;
+}
+
+/*-------------Horizontal--------------*/
+.winHor0 {
+    position: relative;
+    z-index: 500;
+    width: 100%;
+    margin-bottom: -6.5rem;
+}
+
+.winHor1 {
+    position: relative;
+    z-index: 500;
+    width: 100%;
+    margin-bottom: -14.3rem;
+}
+
+.winHor2 {
+    position: relative;
+    z-index: 500;
+    width: 100%;
+    margin-bottom: -22rem;
+}
+
+/*--------------Vertical---------------*/
+.winVer0 {
+    position: relative;
+    z-index: 500;
+    width: 110%;
+    margin-left: -14.6rem;
+    margin-bottom: -14.5rem;
+    rotate: 90deg;
+}
+
+.winVer1 {
+    position: relative;
+    z-index: 500;
+    width: 110%;
+    margin-left: -1.3rem;
+    margin-bottom: -14.5rem;
+    rotate: 90deg;
+}
+
+.winVer2 {
+    position: relative;
+    z-index: 500;
+    width: 110%;
+    margin-left: 6.3rem;
+    margin-bottom: -14.5rem;
+    rotate: 90deg;
+}
+
+/*--------------Diagonal-------------*/
+.winDiaLeft{
+    position: relative;
+    z-index: 500;
+    width: 128%;
+    margin-left: -3.5rem;
+    margin-bottom: -14.5rem;
+    rotate: 46deg;
+}
+
+.winDiaRight{
+    position: relative;
+    z-index: 500;
+    width: 128%;
+    margin-left: -3.5rem;
+    margin-bottom: -14.5rem;
+    rotate: -47deg;
+}
+/*-------------------------------------*/
+
+div {
+    padding: 2.5rem 0;
 }
 
 @media screen and (max-width: 768px) {/*PHONE*/

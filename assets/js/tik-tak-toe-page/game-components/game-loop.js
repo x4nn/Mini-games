@@ -1,6 +1,7 @@
 import { getLetterClass, getMovingPlayer, switchMovingPlayer } from "./config.js";
 
 let WINNER = null;
+const winningLine = `<img src="assets/media/tik-tak-toe/winnin-line.png" alt="winning-line" class="">`;
 const BOARD = [
     [null, null, null],
     [null, null, null],
@@ -120,44 +121,49 @@ function checkColumns(i) {
 }
 
 function checkDiagonal() {
-    if (checkDiagonals() === "leftup" || checkDiagonals() === "rightup") {
+    if (checkDiagonals() === "leftup") {
+        markDiagonalWin(0);
+        WINNER = getMovingPlayer();
+    } else if (checkDiagonals() === "rightup"){
+        markDiagonalWin(1);
         WINNER = getMovingPlayer();
     }
 }
 
 function checkDiagonals() {
     if (BOARD[0][0] === BOARD[1][1] && BOARD[1][1] === BOARD[2][2] && BOARD[1][1] !== null){
-        markDiagonalWin(0, 4, 8);
         return "leftup";
     }
     if (BOARD[0][2] === BOARD[1][1] && BOARD[1][1] === BOARD[2][0] && BOARD[1][1] !== null) {
-        markDiagonalWin(2, 4, 6);
         return "rightup";
     }
 }
 
 function markVerticalWinningSquares(i) {
-    const $allSquares = document.querySelectorAll('div');
+    const $line = document.querySelector('img.hidden');
 
-    $allSquares[i].classList.add('win');
-    $allSquares[i + 3].classList.add('win');
-    $allSquares[i + 6].classList.add('win');
+    $line.classList.remove('hidden');
+    $line.classList.add(`winVer${i}`);
 }
 
 function markHorizontalWin(i) {
-    const $allSquares = document.querySelectorAll('div');
+    const $line = document.querySelector('img.hidden');
 
-    $allSquares[i * 3].classList.add('win');
-    $allSquares[i * 3 + 1].classList.add('win');
-    $allSquares[i * 3 + 2].classList.add('win');
+    $line.classList.remove('hidden');
+    $line.classList.add(`winHor${i}`);
 }
 
-function markDiagonalWin(i1, i2, i3) {
-    const $allSquares = document.querySelectorAll('div');
+function markDiagonalWin(i) {
+    const $line = document.querySelector('img.hidden');
 
-    $allSquares[i1].classList.add('win');
-    $allSquares[i2].classList.add('win');
-    $allSquares[i3].classList.add('win');
+    $line.classList.remove('hidden');
+
+    if (i === 0) {
+        $line.classList.add('winDiaLeft');        
+    } else {
+    
+        $line.classList.add('winDiaRight');
+    }
 }
 
 function boardIsFull() {
