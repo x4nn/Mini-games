@@ -1,7 +1,6 @@
 import { getLetterClass, getMovingPlayer, switchMovingPlayer } from "./config.js";
 
 let WINNER = null;
-const winningLine = `<img src="assets/media/tik-tak-toe/winnin-line.png" alt="winning-line" class="">`;
 const BOARD = [
     [null, null, null],
     [null, null, null],
@@ -25,13 +24,13 @@ function move(e) {
             $div.removeEventListener('click', move);
         });
         switchMovingPlayer();
-        setTimeout(gameOver, 1750);
+        setTimeout(gameOver, 500);
     } else if (boardIsFull()) {
         switchMovingPlayer(true);
         gameOver();
     }
 
-}//todo fix bug wanneer de laatste zet de winnende zet is
+}
 
 function renderCurrentPlayer() {
     const player = getMovingPlayer();
@@ -119,49 +118,44 @@ function checkColumns(i) {
 }
 
 function checkDiagonal() {
-    if (checkDiagonals() === "leftup") {
-        markDiagonalWin(0);
-        WINNER = getMovingPlayer();
-    } else if (checkDiagonals() === "rightup"){
-        markDiagonalWin(1);
+    if (checkDiagonals() === "leftup" || checkDiagonals() === "rightup") {
         WINNER = getMovingPlayer();
     }
 }
 
 function checkDiagonals() {
     if (BOARD[0][0] === BOARD[1][1] && BOARD[1][1] === BOARD[2][2] && BOARD[1][1] !== null){
+        markDiagonalWin(0, 4, 8);
         return "leftup";
     }
     if (BOARD[0][2] === BOARD[1][1] && BOARD[1][1] === BOARD[2][0] && BOARD[1][1] !== null) {
+        markDiagonalWin(2, 4, 6);
         return "rightup";
     }
 }
 
 function markVerticalWinningSquares(i) {
-    const $line = document.querySelector('img.hidden');
+    const $allSquares = document.querySelectorAll('div');
 
-    $line.classList.remove('hidden');
-    $line.classList.add(`winVer${i}`);
+    $allSquares[i].classList.add('win');
+    $allSquares[i + 3].classList.add('win');
+    $allSquares[i + 6].classList.add('win');
 }
 
 function markHorizontalWin(i) {
-    const $line = document.querySelector('img.hidden');
+    const $allSquares = document.querySelectorAll('div');
 
-    $line.classList.remove('hidden');
-    $line.classList.add(`winHor${i}`);
+    $allSquares[i * 3].classList.add('win');
+    $allSquares[i * 3 + 1].classList.add('win');
+    $allSquares[i * 3 + 2].classList.add('win');
 }
 
-function markDiagonalWin(i) {
-    const $line = document.querySelector('img');
+function markDiagonalWin(i1, i2, i3) {
+    const $allSquares = document.querySelectorAll('div');
 
-    $line.classList.remove('hidden');
-
-    if (i === 0) {
-        $line.classList.add('winDiaLeft');        
-    } else {
-    
-        $line.classList.add('winDiaRight');
-    }
+    $allSquares[i1].classList.add('win');
+    $allSquares[i2].classList.add('win');
+    $allSquares[i3].classList.add('win');
 }
 
 function boardIsFull() {
@@ -187,7 +181,20 @@ function gameOver() {
 
     const board = document.querySelector('section');
     board.classList.add('gameover');
-    document.querySelector('footer').insertAdjacentHTML("afterbegin", board.outerHTML)
+    document.querySelector('footer').insertAdjacentHTML("afterbegin", board.outerHTML);
+    fillWinSquares();
+}
+
+function fillWinSquares(){
+    const $allSquares = document.querySelectorAll('div');
+
+    for (const square of $allSquares) {
+        if (square.classList.contains('win')) {
+            square.classList.add('win-gameover');
+        } else {
+            square.style.border = "0";
+        }
+    }
 }
 
 export { move };

@@ -1,17 +1,3 @@
-@keyframes scale {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
 body {
     background-color: rgb(14, 14, 58);
 
@@ -40,8 +26,6 @@ h2 {
     font-size: 3rem;
 
     margin-bottom: 4rem;
-
-    animation: scale 0.5s infinite;
 }
 
 main {
@@ -108,7 +92,6 @@ section {
     grid-template-rows: repeat(3, 8rem);
 
     padding: 1rem;
-    margin: 0 auto;
     margin-bottom: 2rem;
 }
 
@@ -248,7 +231,7 @@ div[data-idx="5"] {
     padding: 2.5rem 0;
 } */
 
-@media screen and (max-width: 768px) and (min-width: 400px) {
+@media screen and (max-width: 768px) {
     /*PHONE*/
 
     header {
@@ -286,7 +269,6 @@ div[data-idx="5"] {
         color: yellow;
         font-size: 2rem;
         margin: 0 auto 3rem auto;
-        animation: scale 0.5s infinite;
     }
 
     section {
@@ -295,6 +277,8 @@ div[data-idx="5"] {
         display: grid;
         grid-template-columns: repeat(3, 5.5rem);
         grid-template-rows: repeat(3, 5.5rem);
+
+        margin: 0 auto;
     }
 
     .gameover {
@@ -302,6 +286,7 @@ div[data-idx="5"] {
     }
 
     #back-button {
+        margin-top: 2rem;
         padding: 1rem 5rem;
     }
 
@@ -380,132 +365,8 @@ div[data-idx="5"] {
     /*-------------------------------------*/
 }
 
-@media screen and (max-width: 400px) {
-    header {
-        width: 50%;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-    }
-
-    main {
-        width: 80%;
-    }
-
-    #curPlayer {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    footer {
-        width: 90%;
-        margin-top: 2rem;
-    }
-
-    footer a {
-        /*buttons*/
-        text-decoration: none;
-        font-weight: bold;
-        color: rgb(14, 14, 58);
-        background-color: yellow;
-        border-radius: 1rem;
-        margin: -7rem 1rem -7rem 0.5rem;
-        padding: 1rem;
-    }
-
-    h2 {
-        color: yellow;
-        font-size: 2rem;
-        margin: 0 auto 3rem auto;
-        animation: scale 0.5s infinite;
-    }
-
-    section {
-        height: 47%;
-
-        display: grid;
-        grid-template-columns: repeat(3, 5.5rem);
-        grid-template-rows: repeat(3, 5.5rem);
-    }
-
-    .gameover {
-        height: 37.5vh;
-    }
-
-    #back-button {
-        padding: 1rem 5rem;
-    }
-
-    /*-------------Horizontal--------------*/
-    .winHor0 {
-        position: relative;
-        z-index: 500;
-        width: 82%;
-        margin: -20.5rem auto 0 auto;
-        margin-top: -20rem;
-    }
-
-    .winHor1 {
-        position: relative;
-        z-index: 500;
-        width: 82%;
-        margin: -20.5rem auto 0 auto;
-        margin-top: -14.5rem;
-    }
-
-    .winHor2 {
-        position: relative;
-        z-index: 500;
-        width: 82%;
-        margin: -20.5rem auto 0 auto;
-        margin-top: -8.85rem;
-    }
-
-    /*--------------Vertical---------------*/
-    .winVer0 {
-        position: relative;
-        z-index: 500;
-        width: 82%;
-        margin-left: -3.55rem;
-        margin-top: -14.5rem;
-        rotate: 90deg;
-    }
-
-    .winVer1 {
-        position: relative;
-        z-index: 500;
-        width: 82%;
-        margin-left: 1.9rem;
-        margin-top: -14.5rem;
-        rotate: 90deg;
-    }
-
-    .winVer2 {
-        position: relative;
-        z-index: 500;
-        width: 82%;
-        margin-left: 7.6rem;
-        margin-top: -14.5rem;
-        rotate: 90deg;
-    }
-
-    /*--------------Diagonal-------------*/
-    .winDiaLeft {
-        position: relative;
-        z-index: 500;
-        width: 96%;
-        margin-left: 0.3rem;
-        margin-top: -14.5rem;
-        rotate: 45deg;
-    }
-
-    .winDiaRight {
-        position: relative;
-        z-index: 500;
-        width: 96%;
-        margin-left: 0.3rem;
-        margin-top: -14.5rem;
-        rotate: -44.5deg;
-    }
-
-    /*-------------------------------------*/
+.win-gameover {
+    background-color: red;
+    border-radius: 30px;
+    border: 0.2rem solid yellow;
 }
