@@ -59,7 +59,10 @@ function markAsFound(){
     const flippedCards = document.querySelectorAll('.up');
 
     flippedCards[0].dataset.state = 'found';
+    flippedCards[0].classList.remove('up');
+
     flippedCards[1].dataset.state = 'found';
+    flippedCards[1].classList.remove('up');
 }
 
 function twoCardsFlipped(){
@@ -72,11 +75,14 @@ function twoCardsFlipped(){
         }
     });
 
+    console.log(flipped);
+
     return flipped === 2;
 }
 
 function isFlipped(img){
-    return !img.classList.contains('hidden');
+
+    return img.classList.contains('up') && img.dataset.state === 'not-found';
 }
 
 function turnCard(target){
@@ -94,14 +100,12 @@ function coverAllCards(){
     const allLocs = document.querySelectorAll('.card');
 
     allLocs.forEach(div => {
-        for (const img of div.children) {
-            if (!img.classList.contains('hidden') && img.alt === 'card' && img.dataset.state === 'not-found') {
-                img.classList.toggle('hidden');
-                img.classList.toggle('up');
-            }
-            if (img.classList.contains('hidden') && img.alt === 'cover') {
-                img.classList.toggle('hidden');
-            }
+
+        if (div.firstChild.classList.contains('up') && div.firstChild.dataset.state === 'not-found') {
+            div.firstChild.classList.toggle('hidden');
+            div.firstChild.classList.toggle('up');
+
+            div.lastChild.classList.toggle('hidden');
         }
     });
 }
