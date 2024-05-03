@@ -1,4 +1,5 @@
 import { fillRandom, coverCards } from "./board-filler/filler.js";
+import { turnHandler } from "./game-loop/play.js";
 
 const TILE_AMT = 16;
 
@@ -9,7 +10,7 @@ function init(){
     fillRandom();
     coverCards();
 
-    // bindEvents();
+    bindEvents();
 }
 
 function addSquares(){
@@ -19,6 +20,12 @@ function addSquares(){
         const tile = `<div class="card" data-idx="${i}"></div>`;
         board.insertAdjacentHTML('beforeend', tile);
     }
+}
+
+function bindEvents(){
+    document.querySelectorAll('img[alt="cover"]').forEach(img => {
+        img.addEventListener('click', turnHandler);
+    });
 }
 
 export { TILE_AMT };

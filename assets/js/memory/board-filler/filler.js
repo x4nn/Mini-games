@@ -18,7 +18,6 @@ function coverCards(){
     const allCardLocs = document.querySelectorAll('.card');
 
     allCardLocs.forEach(div => {
-        div.firstChild.classList.toggle('hidden');
         div.insertAdjacentHTML('beforeend', cover);
     });
 }
@@ -54,7 +53,7 @@ function getArrayWithAllNames() {
 
 function renderCard(name, idx) {
     const loc = document.querySelector(`div[data-idx="${idx}"]`);
-    const img = `<img src="assets/media/memory/${name}.png" alt="${name}">`
+    const img = `<img src="assets/media/memory/${name}.png" alt="card" data-name="${name}" class="hidden">`
 
     loc.insertAdjacentHTML('beforeend', img);
 }
