@@ -7,10 +7,13 @@ init();
 
 function init(){
     addSquares();
+    refreshBoard();
+    bindEvents();
+}
+
+function refreshBoard(){
     fillRandom();
     coverCards();
-
-    bindEvents();
 }
 
 function addSquares(){
@@ -28,4 +31,4 @@ function bindEvents(){
     });
 }
 
-export { TILE_AMT };
+export { refreshBoard, TILE_AMT };

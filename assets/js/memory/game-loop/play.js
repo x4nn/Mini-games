@@ -28,11 +28,38 @@ const playersData = {
 }
 
 function turnHandler(e) {
+    turnCard(e.target);
     if (twoCardsFlipped()) {
-        console.log('2');
+        //check of ze zelfde zijn
+            //JA: voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
+            //NEE: beurt aan volgende
+
+        if (isPair()) {
+            //voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
+            //voeg ook toe aan data dattie found is
+            console.log('pair');
+            markAsFound(); //TODO fix wanneer 2 kaarten zijn omgedraaid, dat we niet meer terug omdraaien maar de rest wel
+        } else {
+
+            setTimeout(coverAllCards, 1500);
+        }
+        
     } else {
-        turnCard(e.target);
+        
     }
+}
+
+function isPair(){
+    const flippedCards = document.querySelectorAll('.up');
+
+    return flippedCards[0].dataset.name === flippedCards[1].dataset.name;
+}
+
+function markAsFound(){
+    const flippedCards = document.querySelectorAll('.up');
+
+    flippedCards[0].dataset.state = 'found';
+    flippedCards[1].dataset.state = 'found';
 }
 
 function twoCardsFlipped(){
@@ -41,7 +68,6 @@ function twoCardsFlipped(){
 
     allLocs.forEach(div => {
         if (isFlipped(div.firstChild)) {
-            console.log('flipped', div);
             flipped++;
         }
     });
@@ -58,7 +84,26 @@ function turnCard(target){
     
     for (const img of cards) {
         img.classList.toggle('hidden');
+        if (img.alt === 'card') {
+            img.classList.toggle('up');
+        }
     }
+}
+
+function coverAllCards(){
+    const allLocs = document.querySelectorAll('.card');
+
+    allLocs.forEach(div => {
+        for (const img of div.children) {
+            if (!img.classList.contains('hidden') && img.alt === 'card' && img.dataset.state === 'not-found') {
+                img.classList.toggle('hidden');
+                img.classList.toggle('up');
+            }
+            if (img.classList.contains('hidden') && img.alt === 'cover') {
+                img.classList.toggle('hidden');
+            }
+        }
+    });
 }
 
 export { turnHandler };

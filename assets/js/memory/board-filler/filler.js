@@ -53,7 +53,7 @@ function getArrayWithAllNames() {
 
 function renderCard(name, idx) {
     const loc = document.querySelector(`div[data-idx="${idx}"]`);
-    const img = `<img src="assets/media/memory/${name}.png" alt="card" data-name="${name}" class="hidden">`
+    const img = `<img src="assets/media/memory/${name}.png" alt="card" data-name="${name}" data-state="not-found" class="hidden">`
 
     loc.insertAdjacentHTML('beforeend', img);
 }
