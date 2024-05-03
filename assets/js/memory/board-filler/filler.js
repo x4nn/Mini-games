@@ -13,6 +13,16 @@ function fillRandom() {
     }
 }
 
+function coverCards(){
+    const cover = `<img src="assets/media/memory/card-back.png" alt="cover">`;
+    const allCardLocs = document.querySelectorAll('.card');
+
+    allCardLocs.forEach(div => {
+        div.firstChild.classList.toggle('hidden');
+        div.insertAdjacentHTML('beforeend', cover);
+    });
+}
+
 function getRandomOrder() {
     const duplicateAllCards = getArrayWithAllNames();
     const randomOrdered = [];
@@ -49,20 +59,4 @@ function renderCard(name, idx) {
     loc.insertAdjacentHTML('beforeend', img);
 }
 
-function isZero(item) {
-    for (const card in item) {
-        if (item[card] === 0) {
-            return true;
-        } else {
-            return true;
-        }
-    }
-}
-
-function getCardName(card) {
-    for (const name in card) {
-        return name;
-    }
-}
-
-export { fillRandom };
+export { fillRandom, coverCards };

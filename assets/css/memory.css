@@ -45,7 +45,6 @@ h1 {
 }
 
 .card {
-    border: 0.1rem solid red;
     border-radius: 1rem;
 }
 
@@ -54,4 +53,8 @@ h1 {
     height: -webkit-fill-available;
 
     border-radius: 1rem;
+}
+
+.hidden {
+    display: none;
 }

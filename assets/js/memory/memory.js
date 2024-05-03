@@ -1,4 +1,4 @@
-import { fillRandom } from "./board-filler/filler.js";
+import { fillRandom, coverCards } from "./board-filler/filler.js";
 
 const TILE_AMT = 16;
 
@@ -7,6 +7,9 @@ init();
 function init(){
     addSquares();
     fillRandom();
+    coverCards();
+
+    // bindEvents();
 }
 
 function addSquares(){
