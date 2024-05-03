@@ -3,7 +3,6 @@ body {
 
     display: flex;
     flex-direction: column;
-    /* height: 100vh; */
 
     overflow: hidden;
 }
@@ -47,5 +46,12 @@ h1 {
 
 .card {
     border: 0.1rem solid red;
+    border-radius: 1rem;
+}
+
+.card img {
+    width: 100%;
+    height: -webkit-fill-available;
+
     border-radius: 1rem;
 }
