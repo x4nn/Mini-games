@@ -10,21 +10,42 @@ click 2: kaart wordt omgedraaid
 Mss while game is not won: check wie er aan de beurt is en laat hem zijn 2 zetten doen
 */
 
+import { TILE_AMT } from "../memory.js";
+
 const playersData = {
     players: {
 
         p1: {
-            foundCards: [],
+            foundCards: 0,
             state: 'PLAYING'
         },
 
         p2: {
-            foundCards: [],
+            foundCards: 0,
             state: 'PLAYING'
         }
     },
 
     currentMovingPlayer: "p1"
+}
+
+function switchMovingPlayer() {
+    const curP = playersData.currentMovingPlayer;
+
+    if (curP === 'p1') {
+        playersData.currentMovingPlayer = 'p2';
+    } else {
+        playersData.currentMovingPlayer = 'p1';
+    }
+
+    renderCurPlayer();
+}
+
+function renderCurPlayer() {
+    const $span = document.querySelector('.info-container span');
+
+    $span.innerHTML = '';
+    $span.innerHTML = playersData.currentMovingPlayer;
 }
 
 function turnHandler(e) {
@@ -33,20 +54,37 @@ function turnHandler(e) {
         //check of ze zelfde zijn
             //JA: voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
             //NEE: beurt aan volgende
-
         if (isPair()) {
             //voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
             //voeg ook toe aan data dattie found is
             console.log('pair');
-            markAsFound(); //TODO fix wanneer 2 kaarten zijn omgedraaid, dat we niet meer terug omdraaien maar de rest wel
+            //TODO fix dat de count omhoog gaat na vinden van pair 
+            markAsFound();
+            checkForWin();
         } else {
-
+            //FIXME da je ni kan klikken tot volgende beurt
             setTimeout(coverAllCards, 1500);
         }
         
     } else {
         
     }
+}
+
+function checkForWin(){
+    //TODO
+    const allSquares = document.querySelectorAll('[alt="card"]');
+    let counter = 0;
+    allSquares.forEach(img => {
+        if (img.dataset.state === 'found') {
+            counter++;
+            if (counter === TILE_AMT) {
+                console.log('game over');
+            } else {
+                console.log('no win');
+            }
+        }
+    });
 }
 
 function isPair(){
@@ -108,6 +146,7 @@ function coverAllCards(){
             div.lastChild.classList.toggle('hidden');
         }
     });
+    switchMovingPlayer();
 }
 
-export { turnHandler };
+export { turnHandler, renderCurPlayer };

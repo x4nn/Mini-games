@@ -12,11 +12,23 @@ header {
     margin: 2rem auto 0rem auto;
 
     border-bottom: 0.1rem solid yellow;
+}
 
-    margin-bottom: 3rem;
+p {
+    color: red;
+    margin: 1rem auto;
 }
 
 main {
+    
+}
+
+.info-container {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.board-container {
     padding: 2rem;
 
     background-color: rgba(240, 237, 61, 0.3);
@@ -24,6 +36,8 @@ main {
     border-radius: 1rem;
 
     margin: 0 auto;
+
+    width: fit-content;
 }
 
 h1 {

@@ -1,5 +1,5 @@
 import { fillRandom, coverCards } from "./board-filler/filler.js";
-import { turnHandler } from "./game-loop/play.js";
+import { renderCurPlayer, turnHandler } from "./game-loop/play.js";
 
 const TILE_AMT = 16;
 
@@ -8,6 +8,7 @@ init();
 function init(){
     addSquares();
     refreshBoard();
+    renderCurPlayer();
     bindEvents();
 }
 
