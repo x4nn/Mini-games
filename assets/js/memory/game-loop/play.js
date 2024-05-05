@@ -72,13 +72,13 @@ function turnHandler(e) {
 }
 
 function checkForWin(){
-    //TODO
     const allSquares = document.querySelectorAll('[alt="card"]');
     let counter = 0;
     allSquares.forEach(img => {
         if (img.dataset.state === 'found') {
             counter++;
             if (counter === TILE_AMT) {
+                //TODO
                 console.log('game over');
             } else {
                 console.log('no win');
