@@ -72,7 +72,7 @@ section {
     align-content: flex-start;
 }
 
-article {
+a {
     outline: 0.15rem solid yellow;
     border-radius: 0.3rem;
 
@@ -84,7 +84,7 @@ article {
     transition: transform 0.2s; /* Animation duration */
 }
 
-article:hover {
+a:hover {
     transform: scale(1.5); /* 150% zoom */
 }
 

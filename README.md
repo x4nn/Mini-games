@@ -17,6 +17,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `1.8` new winning screen, no bugs left
 >
 > - `2.0` memory init
+> - `2.0.1` path fix
  
 > ### GAMES
 >
