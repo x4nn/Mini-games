@@ -98,9 +98,13 @@ function markAsFound(){
 
     flippedCards[0].dataset.state = 'found';
     flippedCards[0].classList.remove('up');
+    flippedCards[0].classList.add(playersData.currentMovingPlayer);
 
     flippedCards[1].dataset.state = 'found';
     flippedCards[1].classList.remove('up');
+    flippedCards[1].classList.add(playersData.currentMovingPlayer);
+
+    //TODO fix de border van player da heeft gevonden
 }
 
 function twoCardsFlipped(){
