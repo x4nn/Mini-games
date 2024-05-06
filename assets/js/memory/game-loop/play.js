@@ -69,7 +69,7 @@ function turnHandler(e) {
 
             //TODO fix dat de count omhoog gaat na vinden van pair 
 
-
+            updatePairsFoundPlayer();//todo
             markAsFound();
             checkForWin();
         } else {
@@ -82,6 +82,12 @@ function turnHandler(e) {
         }
         
     }
+}
+
+function updatePairsFoundPlayer(){
+    const currentMovingPlayer = playersData.currentMovingPlayer;
+
+    playersData.players[currentMovingPlayer].foundCards++;
 }
 
 function checkForWin(){
@@ -167,9 +173,20 @@ function gameOver(){
     const $infoMovingPlayer = document.querySelector('.info-container')
     const $gameOver = document.querySelector('.game-over');
 
+    renderFoundPairs();
+
     $board.classList.toggle('hidden');
     $infoMovingPlayer.classList.toggle('hidden')
     $gameOver.classList.toggle('hidden');
+
+}
+
+function renderFoundPairs(){
+    const $p1Pairs = document.querySelector('#p1-pairs-found span');
+    const $p2Pairs = document.querySelector('#p2-pairs-found span');
+
+    $p1Pairs.insertAdjacentHTML('beforeend', playersData.players.p1.foundCards);
+    $p2Pairs.insertAdjacentHTML('beforeend', playersData.players.p2.foundCards);
 }
 
 export { turnHandler, renderCurPlayer };
