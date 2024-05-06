@@ -15,6 +15,8 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `1.7:` new game over screen
 > - `1.7.1` made more responsive
 > - `1.8` new winning screen, no bugs left
+>
+> - `2.0` memory init
  
 > ### GAMES
 >
