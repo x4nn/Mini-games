@@ -51,22 +51,35 @@ function renderCurPlayer() {
 function turnHandler(e) {
     turnCard(e.target);
     if (twoCardsFlipped()) {
+
+
         //check of ze zelfde zijn
             //JA: voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
             //NEE: beurt aan volgende
+
+
         if (isPair()) {
+
+
             //voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
             //voeg ook toe aan data dattie found is
+
+
             console.log('pair');
+
             //TODO fix dat de count omhoog gaat na vinden van pair 
+
+
             markAsFound();
             checkForWin();
         } else {
+
+
             //FIXME da je ni kan klikken tot volgende beurt
+
+
             setTimeout(coverAllCards, 1500);
         }
-        
-    } else {
         
     }
 }
@@ -80,6 +93,7 @@ function checkForWin(){
             if (counter === TILE_AMT) {
                 //TODO
                 console.log('game over');
+                gameOver();
             } else {
                 console.log('no win');
             }
@@ -103,8 +117,6 @@ function markAsFound(){
     flippedCards[1].dataset.state = 'found';
     flippedCards[1].classList.remove('up');
     flippedCards[1].classList.add(playersData.currentMovingPlayer);
-
-    //TODO fix de border van player da heeft gevonden
 }
 
 function twoCardsFlipped(){
@@ -151,6 +163,14 @@ function coverAllCards(){
         }
     });
     switchMovingPlayer();
+}
+
+function gameOver(){
+    const $board = document.querySelector('#board-container');
+    const $gameOver = document.querySelector('.game-over');
+
+    $board.classList.toggle('hidden');
+    $gameOver.classList.toggle('hidden');
 }
 
 export { turnHandler, renderCurPlayer };
