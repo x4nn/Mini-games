@@ -91,11 +91,8 @@ function checkForWin(){
         if (img.dataset.state === 'found') {
             counter++;
             if (counter === TILE_AMT) {
-                //TODO
                 console.log('game over');
                 gameOver();
-            } else {
-                console.log('no win');
             }
         }
     });
@@ -166,10 +163,12 @@ function coverAllCards(){
 }
 
 function gameOver(){
-    const $board = document.querySelector('#board-container');
+    const $board = document.querySelector('.board-container');
+    const $infoMovingPlayer = document.querySelector('.info-container')
     const $gameOver = document.querySelector('.game-over');
 
     $board.classList.toggle('hidden');
+    $infoMovingPlayer.classList.toggle('hidden')
     $gameOver.classList.toggle('hidden');
 }
 
