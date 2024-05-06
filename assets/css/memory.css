@@ -14,6 +14,11 @@ header {
     border-bottom: 0.1rem solid yellow;
 }
 
+main {
+    width: max-content;
+    margin: auto auto;
+}
+
 p {
     color: yellow;
     margin: 1rem auto;
@@ -96,4 +101,16 @@ h2 {
 
 .hidden {
     display: none;
+}
+
+#p1-pairs-found h2{
+    color: green;
+}
+
+#p2-pairs-found h2{
+    color: red;
+}
+
+#p2-pairs-found{
+    margin-left: 10rem;
 }
