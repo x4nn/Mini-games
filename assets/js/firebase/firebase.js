@@ -27,8 +27,8 @@ async function getData() {
     }
 }
 
-function AddNewGame(game, gameName, initPlayer) {//works
-    firebase.database().ref(`mini-games/data/${game}/${gameName}`).set({
+function AddNewGame(game, gameName, initPlayer, code) {//works
+    firebase.database().ref(`mini-games/data/${game}/${code}`).set({
         gameName: gameName,
 
         players: [
@@ -38,10 +38,16 @@ function AddNewGame(game, gameName, initPlayer) {//works
             }
         ],
 
+        gameStatus: 'waiting',
+
         currentMovePlayer: initPlayer
 
 
     });
+}
+
+function updateGame(game, code, gameData){//for now just TTT implementation
+    firebase.database().ref(`mini-games/data/${game}/${code}`).set(gameData);
 }
 
 function deleteGame(game, gameName) { //works
@@ -56,4 +62,4 @@ function deleteGame(game, gameName) { //works
         });
 }
 
-export { getData, AddNewGame, deleteGame };
+export { getData, AddNewGame, deleteGame, updateGame };

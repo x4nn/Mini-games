@@ -26,8 +26,8 @@
     </header>
 
     <div id="lobby" class="">
-
-        <input type="text" name="gamename" id="gamename" placeholder="gamename...">
+        <label for="gamename" class="hidden">Game does not exist!</label>
+        <input type="text" name="gamename" id="gamename" placeholder="gamename or join code...">
         <div class="lobby-buttons">
             <button class="host" data-next="wfp">host</button>
             <button class="join">join</button>
@@ -37,6 +37,7 @@
 
     <div id="wfp" class="hidden">
         <p>WAITING FOR PLAYER</p>
+        <p>Code to join: <span id="code"></span></p>
     </div>
 
     <div id="playing-game" class="playing-game hidden">

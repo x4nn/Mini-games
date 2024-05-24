@@ -383,6 +383,12 @@ div[data-idx="5"] {
     margin-top: 10rem;
 }
 
+label {
+    margin: 0 auto 0.5rem auto;
+    color: red;
+    font-size: 2rem;
+}
+
 input {
     display: block;
     color: yellow;
@@ -392,8 +398,8 @@ input {
     border: 0.2rem solid yellow;
     border-radius: 10px;
 
-    padding-left: 1rem;
-    margin: 3rem auto;
+    padding: 1rem;
+    margin: 0 auto 3rem auto;
 }
 
 #lobby .lobby-buttons {
@@ -428,7 +434,15 @@ input {
     text-align: center;
     font-size: 4rem;
 
-    margin: 2rem auto;
+    margin: 4rem auto;
+}
+
+#wfp p:first-child {
+    margin-bottom: 3rem;
+}
+
+#code {
+    color: red;
 }
 
 

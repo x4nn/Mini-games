@@ -1,14 +1,24 @@
 import * as Firebase from "../../firebase/firebase.js";
-import { deleteFromStorage, loadFromStorage, saveToStorage, toggleHidden } from "../../util.js";
+import { deleteFromStorage, generateRandomCode, loadFromStorage, saveToStorage, toggleHidden } from "../../util.js";
 
-const game = 'tiktaktoe';
+const GAME = 'tiktaktoe';
+const USERNAME = loadFromStorage('username');
 
 initMultiPlayer();
 
 function initMultiPlayer() {
+    saveToStorage('state', 'NP');
     bindEvents();
     setupTTT();
+    updateData();
     console.log(getData());
+}
+
+function updateData(){
+    getData();
+    if (loadFromStorage('state') === 'NP') {
+        setTimeout(updateData, 3000);
+    }
 }
 
 function setupTTT(){
@@ -22,13 +32,18 @@ function bindEvents() {
     document.querySelector('.host').addEventListener('click', (e) => {
         e.preventDefault();
 
+        deleteFromStorage('state');
+
         if (isReadyToPlay()) {
             const gameName = document.querySelector('#gamename').value;
-            const name = document.querySelector('#username').value;
+            const name = loadFromStorage('username');
+            const code = generateRandomCode(name, gameName).toLowerCase();
 
-            Firebase.AddNewGame(game, gameName, name);
+            Firebase.AddNewGame(GAME, gameName, name, code);
 
             const nextSection = e.target.dataset.next;
+
+            renderCode(code);
 
             navigateTo(e.target.parentElement.parentElement, nextSection);
         }
@@ -37,30 +52,60 @@ function bindEvents() {
 
     document.querySelector('.join').addEventListener('click', (e) => {
         e.preventDefault();
-        const gameName = document.querySelector('#gamename').value;
 
-        if (gameExists(gameName)) {
-            console.log('bestaat');
-        }
+        deleteFromStorage('state');
 
-        if (isReadyToPlay()) {
-            //vind game en join oulleh
+        const data = getData();
+        const code = document.querySelector('#gamename').value;
+
+        if (gameExists(data, code)) {
+            joinGame(code);
+        } else {
+            renderNonExistingGameError();
         }
 
     });
 }
 
-function gameExists(gameName) {
-    const data = loadFromStorage('data').data;
-    const games = data[game];
+function joinGame(code){
+
+    const game = loadFromStorage('data').data[GAME][code];
+
+    const thisUser = {
+        pname: USERNAME,
+        status: 'playing'
+    };
+
+    game.gameStatus = 'started';
+
+    game.players[0].status = 'playing';
+    game.players.push(thisUser);
+
+
+    Firebase.updateGame(GAME, code, game);
+
+}
+
+function renderNonExistingGameError(){
+    const $label = document.querySelector('#lobby label');
+    $label.classList.remove('hidden');
+}
+
+function gameExists(data, code) {
+    const games = data.data[GAME];
 
     for (const name in games) {
-        if (name === gameName) {
+        if (name === code) {
             return true;
         }
     }
 
     return false;
+}
+
+function renderCode(code){
+    const $span = document.querySelector('#code');
+    $span.innerHTML = code;
 }
 
 function isReadyToPlay() {
