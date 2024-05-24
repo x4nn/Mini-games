@@ -85,7 +85,10 @@ h2 {
 
 
 .game-over {
-    display: flex;
+    display: grid;
+    /* grid-template-rows: 1fr 1fr; */
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
     justify-content: space-around;
 
     margin-top: 10rem;
@@ -113,4 +116,19 @@ h2 {
 
 #p2-pairs-found{
     margin-left: 10rem;
+}
+
+button {
+    background-color: yellow;
+    border-radius: 1rem;
+    margin: 4rem 3rem;
+    padding: 1rem;
+
+    font-size: 1.5rem;
+}
+
+button:hover {
+    background-color: rgb(14, 14, 58);
+    border: 0.1rem solid yellow;
+    color: yellow;
 }

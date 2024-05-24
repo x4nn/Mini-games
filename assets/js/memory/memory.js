@@ -30,6 +30,8 @@ function bindEvents(){
     document.querySelectorAll('img[alt="cover"]').forEach(img => {
         img.addEventListener('click', turnHandler);
     });
+    document.querySelector('.again').addEventListener('click', () => window.location.reload());
+    document.querySelector('.home').addEventListener('click', () => window.location.href = 'index');
 }
 
 export { refreshBoard, TILE_AMT };
