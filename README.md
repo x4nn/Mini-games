@@ -33,6 +33,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - soort puzzel waarbij je de stukjes kan slepen?
 
 > ### Extra features
+> - `add admin panel for ex. deleting all games`
 > - dark/light mode
 
 > ### Tik Tak Toe

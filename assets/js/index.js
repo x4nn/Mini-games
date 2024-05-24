@@ -1,11 +1,9 @@
-import { logData } from "./firebase/firebase.js";
 import { gameHandler} from "./utils/handler.js";
 
 init();
 
 function init(){
     bindEvents();
-    logData();
 }
 
 function bindEvents(){

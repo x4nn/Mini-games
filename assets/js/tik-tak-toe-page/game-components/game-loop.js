@@ -11,6 +11,7 @@ function move(e) {
     const movingPlayer = getMovingPlayer();
 
     if (clickedOnEmptySquare(e.target)) {
+        console.log(movingPlayer);
         renderLetter(e.target, getLetterClass(movingPlayer));
         updateBoard(e.target.dataset.idx);
         updateWinner();
@@ -40,7 +41,7 @@ function renderCurrentPlayer() {
 }
 
 function clickedOnEmptySquare(square) {
-    return square.classList.value === '';
+    return square.classList.contains('cell') && !square.classList.contains('X') && !square.classList.contains('O');
 }
 
 function renderLetter(location, letter) {
@@ -143,7 +144,7 @@ function markVerticalWinningSquares(i) {
 }
 
 function markHorizontalWin(i) {
-    const $allSquares = document.querySelectorAll('div');
+    const $allSquares = document.querySelectorAll('.cell');
 
     $allSquares[i * 3].classList.add('win');
     $allSquares[i * 3 + 1].classList.add('win');
@@ -173,7 +174,7 @@ function boardIsFull() {
 }
 
 function gameOver() {
-    document.querySelector('main').classList.add('hidden');
+    document.querySelector('.playing-game').classList.add('hidden');
     document.querySelector('footer').classList.remove('hidden');
 
     document.querySelector('header').style.filter = 'blur(3px)';

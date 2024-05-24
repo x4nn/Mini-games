@@ -3,7 +3,7 @@ body {
 
     width: 100%;
 
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 header {
@@ -12,7 +12,7 @@ header {
 
     border-bottom: 0.1rem solid yellow;
 
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 h1 {
@@ -28,7 +28,7 @@ h2 {
     margin-bottom: 4rem;
 }
 
-main {
+.playing-game {
     width: 27.2%;
     height: 40.1rem;
 
@@ -37,6 +37,22 @@ main {
 
     text-align: center;
 }
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.625rem;
+    width: 100%;
+    height: 55%;
+    margin: 0 auto;
+    padding: 1rem
+  }
+  
+.cell {
+    border: 1px solid black;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 2.5rem;
+}
 
 footer {
 
@@ -44,7 +60,7 @@ footer {
 
     width: 27.2%;
     height: 49vh;
-    margin: 5rem auto 0 auto;
+    margin: 2rem auto 0 auto;
     text-align: center;
 
    
@@ -60,7 +76,6 @@ footer a {
     background-color: yellow;
     border-radius: 1rem;
 
-    margin: 3rem 3rem 3rem 3rem;
     padding: 1rem;
 }
 
@@ -74,8 +89,15 @@ footer a:hover {
     outline: 0.2rem solid yellow;
     border-radius: 1rem;
 
-    margin: 3rem;
     padding: 1rem;
+}
+
+.buttons{
+    margin-top: 5rem;
+}
+
+footer a[href='index']{
+    margin-left: 7rem;
 }
 
 #curPlayer {
@@ -83,15 +105,6 @@ footer a:hover {
     font-size: 3rem;
     text-align: center;
 
-    margin-bottom: 5rem;
-}
-
-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 8rem);
-
-    padding: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -108,9 +121,6 @@ section {
     border-radius: 1rem;
 }
 
-.hidden {
-    display: none;
-}
 
 div[data-idx="0"],
 div[data-idx="1"],
@@ -146,11 +156,6 @@ div[data-idx="5"] {
     background-position-x: center;
     background-position-y: center;
     background-size: 62%;
-}
-
-.board div {
-    z-index: 0;
-    padding: 2.5rem 0;
 }
 
 /*-------------Horizontal--------------*/
@@ -369,4 +374,67 @@ div[data-idx="5"] {
     background-color: red;
     border-radius: 30px;
     border: 0.2rem solid yellow;
+}
+
+
+
+
+#lobby {
+    margin-top: 10rem;
+}
+
+input {
+    display: block;
+    color: yellow;
+    font-size: 3rem;
+}
+
+input {
+    background-color: rgb(14, 14, 58);
+    color: yellow;
+    border: 0.2rem solid yellow;
+    border-radius: 10px;
+
+    padding-left: 1rem;
+    margin: 3rem auto;
+}
+
+#lobby .lobby-buttons {
+    text-align: center;
+}
+
+#lobby button {
+    font-size: 3rem;
+    background-color: yellow;
+    color: rgb(14, 14, 58);;
+
+    padding: 2rem 3rem;
+
+    border-radius: 20px;
+}
+
+#lobby button:hover {
+    font-size: 3rem;
+    background-color: rgb(14, 14, 58);
+    color: yellow;
+
+    border: 0.3rem solid yellow;
+}
+
+.join {
+    margin-left: 5rem;
+}
+
+#wfp {
+    color: yellow;
+
+    text-align: center;
+    font-size: 4rem;
+
+    margin: 2rem auto;
+}
+
+
+.hidden {
+    display: none;
 }

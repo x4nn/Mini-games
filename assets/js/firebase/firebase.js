@@ -1,11 +1,5 @@
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
     apiKey: "AIzaSyDFMRm76FrNOQ78pMB-rMcTDmWygs4wNDA",
     databaseURL: "https://mini-games-dbmn-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -19,31 +13,47 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// const analytics = firebase.getAnalytics(app);
+
 const db = firebase.database();
 const pathData = db.ref('mini-games');
 
-function logData() {
-    pathData.on('value', (ss) => {
-        console.log(ss.val());
+async function getData() {
+    try {
+        const snapshot = await pathData.once('value');
+        const data = snapshot.val();
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+function AddNewGame(game, gameName, initPlayer) {//works
+    firebase.database().ref(`mini-games/data/${game}/${gameName}`).set({
+        gameName: gameName,
+
+        players: [
+            {
+                pname: initPlayer,
+                status: 'waiting'
+            }
+        ],
+
+        currentMovePlayer: initPlayer
+
+
     });
 }
 
-function test() {
-    pathData.set("kyanobigdig");
+function deleteGame(game, gameName) { //works
+    const gameRef = db.ref(`mini-games/data/${game}/${gameName}`); // Replace 'gameId' with the actual ID
 
+    gameRef.remove()
+        .then(() => {
+            console.log("Game deleted successfully!");
+        })
+        .catch((error) => {
+            console.error("Error deleting game:", error);
+        });
 }
 
-function AddTerm() {
-    firebase.database().ref("mini-games/data/test").set({
-        
-        test1: "1",
-        test2: "2",
-        test3: "3"
-    });
-}
-
-AddTerm();
-
-
-export { logData };
+export { getData, AddNewGame, deleteGame };

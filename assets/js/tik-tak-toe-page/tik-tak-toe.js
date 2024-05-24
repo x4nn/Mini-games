@@ -9,7 +9,7 @@ function initTikTakToe(){
 }
 
 function setupNewGame(){
-    document.querySelector('main').classList.remove('hidden');
+    document.querySelector('.playing-game').classList.remove('hidden');
     document.querySelector('footer').classList.add('hidden');
 }
 
