@@ -19,6 +19,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `2.0` memory init
 > - `2.0.1` path fix
 > - `2.1` added buttons at game over and fixed rainbow background
+> - `2.1.1` added firebase (thx kyano)
  
 > ### GAMES
 >
