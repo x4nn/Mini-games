@@ -50,8 +50,8 @@ function updateGame(game, code, gameData){//for now just TTT implementation
     firebase.database().ref(`mini-games/data/${game}/${code}`).set(gameData);
 }
 
-function deleteGame(game, gameName) { //works
-    const gameRef = db.ref(`mini-games/data/${game}/${gameName}`); // Replace 'gameId' with the actual ID
+function deleteGame(game, code) { //works
+    const gameRef = db.ref(`mini-games/data/${game}/${code}`); // Replace 'gameId' with the actual ID
 
     gameRef.remove()
         .then(() => {

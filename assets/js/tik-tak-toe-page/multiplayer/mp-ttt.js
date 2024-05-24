@@ -45,7 +45,11 @@ function bindEvents() {
 
             renderCode(code);
 
-            navigateTo(e.target.parentElement.parentElement, nextSection);
+            const currentPage = e.target.parentElement.parentElement;
+
+            navigateTo(currentPage, nextSection);
+
+            waitForStart(code, currentPage);
         }
 
     });
@@ -67,6 +71,21 @@ function bindEvents() {
     });
 }
 
+function startGame(){
+    console.log('started');
+}
+
+function waitForStart(code, currentPage){
+    Firebase.getData().then(data => console.log(data.data[GAME][code]));
+
+    if (2 === 1) {
+        navigateTo(currentPage, 'playing-game');
+        startGame();
+    } else {
+        setTimeout(waitForStart, 1000);
+    }
+}
+
 function joinGame(code){
 
     const game = loadFromStorage('data').data[GAME][code];
@@ -84,6 +103,7 @@ function joinGame(code){
 
     Firebase.updateGame(GAME, code, game);
 
+    navigateTo(document.querySelector('#lobby'), 'playing-game');
 }
 
 function renderNonExistingGameError(){
