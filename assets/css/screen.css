@@ -50,6 +50,10 @@ body {
     background-position-y: center;
 }
 
+header {
+    margin-bottom: 3rem;
+}
+
 h1{
     margin-top: 8rem;
     color: yellow;
@@ -57,6 +61,28 @@ h1{
     text-align: center;
     line-height: 3rem;
     letter-spacing: 0.1rem;
+}
+
+input, label {
+    text-align: center;
+    display: block;
+}
+
+label {
+    margin: 0 auto 0.5rem auto;
+    color: red;
+}
+
+input{
+    font-size: 3rem;
+
+    color: yellow;
+    background-color: rgb(14, 14, 58);
+    border: 0.2rem solid yellow;
+    border-radius: 10px;
+
+    padding-left: 1rem;
+    margin: 0rem auto;
 }
 
 section {
@@ -159,4 +185,8 @@ a:hover {
     background-size: 2.8rem;
     background-position-x: center;
     background-position-y: center;
+}
+
+.hidden {
+    display: none;
 }

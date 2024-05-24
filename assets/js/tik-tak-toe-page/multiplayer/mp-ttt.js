@@ -1,6 +1,7 @@
 import * as Firebase from "../../firebase/firebase.js";
 import { deleteFromStorage, loadFromStorage, saveToStorage, toggleHidden } from "../../util.js";
 
+const game = 'tiktaktoe';
 
 initMultiPlayer();
 
@@ -21,12 +22,11 @@ function bindEvents() {
     document.querySelector('.host').addEventListener('click', (e) => {
         e.preventDefault();
 
-        if (isReadyToHost()) {
-            //todo waiting for players screentje mss
+        if (isReadyToPlay()) {
             const gameName = document.querySelector('#gamename').value;
             const name = document.querySelector('#username').value;
 
-            Firebase.AddNewGame('tiktaktoe', gameName, name);
+            Firebase.AddNewGame(game, gameName, name);
 
             const nextSection = e.target.dataset.next;
 
@@ -37,16 +37,34 @@ function bindEvents() {
 
     document.querySelector('.join').addEventListener('click', (e) => {
         e.preventDefault();
+        const gameName = document.querySelector('#gamename').value;
 
-        if (isReadyToHost()) {
+        if (gameExists(gameName)) {
+            console.log('bestaat');
+        }
+
+        if (isReadyToPlay()) {
             //vind game en join oulleh
         }
 
     });
 }
 
-function isReadyToHost() {
-    return document.querySelector('#username').value !== '' && document.querySelector('#gamename').value !== '';
+function gameExists(gameName) {
+    const data = loadFromStorage('data').data;
+    const games = data[game];
+
+    for (const name in games) {
+        if (name === gameName) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function isReadyToPlay() {
+    return document.querySelector('#gamename').value !== '';
 }
 
 function getData(){

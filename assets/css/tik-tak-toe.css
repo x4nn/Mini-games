@@ -387,11 +387,8 @@ input {
     display: block;
     color: yellow;
     font-size: 3rem;
-}
 
-input {
     background-color: rgb(14, 14, 58);
-    color: yellow;
     border: 0.2rem solid yellow;
     border-radius: 10px;
 

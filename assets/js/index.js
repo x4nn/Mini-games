@@ -7,9 +7,10 @@ function init(){
 }
 
 function bindEvents(){
-    // document.querySelectorAll('article').forEach($article => {
-    //     $article.addEventListener('click', gameHandler);
-    // });
+    document.querySelectorAll('a').forEach($article => {
+        $article.addEventListener('click', gameHandler);
+    });
 
     document.querySelector('#rainbow').addEventListener('click', (e) => e.preventDefault() );
 }
+
