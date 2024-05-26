@@ -20,7 +20,7 @@ function initMultiPlayer() {
 function updateData(){
     getData();
     if (loadFromStorage('state') === 'NP') {
-        setTimeout(updateData, 3000);
+        setTimeout(updateData, 2000);
     }
 }
 
@@ -85,9 +85,9 @@ function waitForStart() {
         if (gameInfo.gameStatus === 'started') {
             navigateTo(waitinPage, 'playing-game');
             sessionStorage.setItem('code', GAME_CODE);
+            updateData();
             startGame();
         } else {
-            console.log('check02')
             setTimeout(waitForStart, 1000);
         }
 
@@ -115,6 +115,7 @@ function joinGame(code){
 
     navigateTo(document.querySelector('#lobby'), 'playing-game');
 
+    updateData();
     setTimeout(startGame, 3000);
 }
 
