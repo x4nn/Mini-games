@@ -9,7 +9,9 @@ function init(){
         const games = loadFromStorage('data').data.tiktaktoe;
 
         for (const code in games) {
-            deleteGame('tiktaktoe', code);
+            if (code !== 'xxxx') {
+                deleteGame('tiktaktoe', code);
+            }
         }
     });
 }

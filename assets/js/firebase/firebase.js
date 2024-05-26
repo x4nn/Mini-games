@@ -34,6 +34,7 @@ function AddNewGame(game, gameName, initPlayer, code) {//works
         players: [
             {
                 pname: initPlayer,
+                pion: 'X',
                 status: 'waiting'
             }
         ],
