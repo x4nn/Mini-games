@@ -63,6 +63,19 @@ h1{
     letter-spacing: 0.1rem;
 }
 
+section {
+    /*outline: 0.25rem solid white;*/
+
+    width: 17rem;
+    height: 20rem;
+    margin: 10rem auto 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
 input, label {
     text-align: center;
     display: block;
@@ -81,21 +94,9 @@ input{
     border: 0.2rem solid yellow;
     border-radius: 10px;
 
-    padding-left: 1rem;
     margin: 0rem auto;
-}
-
-section {
-    /*outline: 0.25rem solid white;*/
-
-    width: 17rem;
-    height: 20rem;
-    margin: 10rem auto 0 auto;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: flex-start;
+    padding-left: 1rem;
+    
 }
 
 a {
