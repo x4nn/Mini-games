@@ -1,9 +1,11 @@
 import * as Firebase from "../../firebase/firebase.js";
 import { deleteFromStorage, generateRandomCode, loadFromStorage, saveToStorage, toggleHidden } from "../../util.js";
+import { startGame } from "./mp-ttt-gameloop.js";
 
 const GAME = 'tiktaktoe';
 let GAME_CODE = null;
 const USERNAME = JSON.parse(sessionStorage.getItem('username'));
+const waitinPage = document.querySelector('#wfp');
 
 initMultiPlayer();
 
@@ -48,12 +50,10 @@ function bindEvents() {
 
             const currentPage = e.target.parentElement.parentElement;
 
-            console.log(e.target);
-
             navigateTo(currentPage, nextSection);
 
             GAME_CODE = code;
-            waitForStart(document.querySelector('#wfp'));
+            waitForStart();
         }
 
     });
@@ -67,6 +67,7 @@ function bindEvents() {
         const code = document.querySelector('#gamename').value;
 
         if (gameExists(data, code)) {
+            sessionStorage.setItem('code', code);
             joinGame(code);
         } else {
             renderNonExistingGameError();
@@ -75,26 +76,24 @@ function bindEvents() {
     });
 }
 
-function startGame(){
-    console.log('started');
-}
-
-function waitForStart(currentPage){
+function waitForStart() {
     Firebase.getData().then(data => {
         // console.log('current page:', currentPage);
 
         const gameInfo = data.data[GAME][GAME_CODE];
 
         if (gameInfo.gameStatus === 'started') {
-            navigateTo(currentPage, 'playing-game');
+            navigateTo(waitinPage, 'playing-game');
+            sessionStorage.setItem('code', GAME_CODE);
             startGame();
         } else {
-            setTimeout(waitForStart(currentPage), 1000);
+            console.log('check02')
+            setTimeout(waitForStart, 1000);
         }
 
     });
 
-    
+
 }
 
 function joinGame(code){
@@ -115,6 +114,8 @@ function joinGame(code){
     Firebase.updateGame(GAME, code, game);
 
     navigateTo(document.querySelector('#lobby'), 'playing-game');
+
+    setTimeout(startGame, 3000);
 }
 
 function renderNonExistingGameError(){
@@ -162,4 +163,3 @@ function navigateTo(current, next){
 
     toggleHidden(nextElem);
 }
-
