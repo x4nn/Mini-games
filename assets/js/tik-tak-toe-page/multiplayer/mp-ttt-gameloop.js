@@ -38,6 +38,11 @@ function gameloop() {
         if (USERNAME === activePlayer) {
             refreshBoard(board);
             enableMove();
+        } else if (activePlayer === 'game-over') {
+            console.log('GAME OVER');
+            refreshBoard(board);
+            checkForWinner(board);
+            gameOver();
         } else {
             setTimeout(gameloop, 2000);
         }
@@ -60,19 +65,21 @@ function move(e) {
         game.board = board;
         ///------------------------------
         checkForWinner(board);
-
         ///------------------------------
         const players = game.players;
         const nextPlayer = getNextPlayer(players);
         game.currentMovePlayer = nextPlayer;
         ///------------------------------
+        if (WINNER !== null || boardIsFull(board)) {
+            game.status = 'game-over';
+            game.currentMovePlayer = 'game-over';
+        }
     }
 
     //TODO verander in backend dat de game gewonnen is, wanneer gameloop
     //TODO opnieuw gespeeld wordt, check je wie laatste zet heeft gedaan en die is winner
 
     Firebase.updateGame(GAME, sessionStorage.getItem('code'), game);
-    console.log('winner:', WINNER);
     gameloop();
 }
 
@@ -234,6 +241,45 @@ function getNextPlayer(players) {
         }
     }
     return 'null';
+}
+
+function gameOver() {
+    document.querySelector('.playing-game').classList.toggle('hidden');
+    document.querySelector('footer').classList.toggle('hidden');
+
+    document.querySelector('header').style.filter = 'blur(3px)';
+    document.querySelector('.board').style.filter = 'blur(2px)';
+
+    const board = document.querySelector('section');
+    board.classList.add('gameover');
+    document.querySelector('footer').insertAdjacentHTML("afterbegin", board.outerHTML);
+    fillWinSquares();
+}
+
+function fillWinSquares(){
+    const $allSquares = document.querySelectorAll('.cell');
+
+    for (const square of $allSquares) {
+        if (square.classList.contains('win')) {
+            square.classList.add('win-gameover');
+        } else {
+            square.style.border = "0";
+        }
+    }
+}
+
+function boardIsFull(board) {
+    let filledSquares = 0;
+
+    for (const row of board) {
+        for (const col of row) {
+            if (col !== 'null') {
+                filledSquares++;
+            }
+        }
+    }
+
+    return filledSquares === 9;
 }
 
 export { startGame };
