@@ -10,11 +10,25 @@
     <style>
         body {
             background-color: black;
+            height: 100vh;
+            display: flex;
         }
 
         button {
-            background-color: yellow;
-            padding: 2rem;
+            width: -webkit-fill-available;
+            background-color: red;
+            border-radius: 90px;
+            outline: 10px solid green;
+            padding: 5rem;
+            margin: auto auto;
+
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        span{
+            font-size: 3rem;
         }
     </style>
 
@@ -26,7 +40,7 @@
 </head>
 
 <body>
-    <button id="deleteAll">Delete TTT games</button>
+    <button id="deleteAll"><span>&#9888;</span> Delete TTT games <span>&#9888;</span></button>
 </body>
 
 </html>

@@ -23,7 +23,7 @@ function gameHandler(e) {
 }
 
 function renderNoUserNameError(){
-    toggleHidden(document.querySelector('label'));
+    document.querySelector('label').classList.remove('hidden');
 }
 
 function isReadyToPlay() {

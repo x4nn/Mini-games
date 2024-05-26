@@ -4,18 +4,20 @@
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
 }
-  
-  @keyframes gradientAnimation {
+
+@keyframes gradientAnimation {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
+
     50% {
-      background-position: 100% 50%;
+        background-position: 100% 50%;
     }
+
     100% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
-  }
+}
 
 
 body {
@@ -54,7 +56,7 @@ header {
     margin-bottom: 3rem;
 }
 
-h1{
+h1 {
     margin-top: 8rem;
     color: yellow;
     font-size: 2rem;
@@ -76,7 +78,8 @@ section {
     align-content: flex-start;
 }
 
-input, label {
+input,
+label {
     text-align: center;
     display: block;
 }
@@ -86,7 +89,7 @@ label {
     color: red;
 }
 
-input{
+input {
     font-size: 3rem;
 
     color: yellow;
@@ -95,8 +98,7 @@ input{
     border-radius: 10px;
 
     margin: 0rem auto;
-    padding-left: 1rem;
-    
+
 }
 
 a {
@@ -108,11 +110,13 @@ a {
 
     margin: 0.5rem;
 
-    transition: transform 0.2s; /* Animation duration */
+    transition: transform 0.2s;
+    /* Animation duration */
 }
 
 a:hover {
-    transform: scale(1.5); /* 150% zoom */
+    transform: scale(1.5);
+    /* 150% zoom */
 }
 
 /*---------------The symbols---------------*/
@@ -143,7 +147,7 @@ a:hover {
     background-position-y: center;
 }
 
-#words{
+#words {
     background-image: url("../media/game-symbols/words.png");
     background-repeat: no-repeat;
 
@@ -152,7 +156,7 @@ a:hover {
     background-position-y: center;
 }
 
-#simon-says{
+#simon-says {
     background-image: url("../media/game-symbols/simon.png");
     background-repeat: no-repeat;
 
@@ -190,4 +194,13 @@ a:hover {
 
 .hidden {
     display: none;
+}
+
+@media screen and (max-width: 768px) {
+    /*PHONE*/
+    input {
+        font-size: 1.3rem;
+        padding: 0.75rem 0;
+    }
+
 }
