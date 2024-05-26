@@ -37,6 +37,7 @@ h2 {
 
     text-align: center;
 }
+
 .board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -45,8 +46,8 @@ h2 {
     height: min-content;
     margin: 0 auto;
     padding: 1rem
-  }
-  
+}
+
 .cell {
     border: 1px solid black;
     box-sizing: border-box;
@@ -63,7 +64,7 @@ footer {
     margin: 2rem auto 0 auto;
     text-align: center;
 
-   
+
 }
 
 footer a {
@@ -92,11 +93,11 @@ footer a:hover {
     padding: 1rem;
 }
 
-.buttons{
+.buttons {
     margin-top: 5rem;
 }
 
-footer a[href='index']{
+footer a[href='index'] {
     margin-left: 7rem;
 }
 
@@ -255,6 +256,7 @@ div[data-idx="5"] {
     }
 
     footer {
+        display: inline;
         width: 90%;
         margin-top: 2rem;
     }
@@ -268,6 +270,31 @@ div[data-idx="5"] {
         border-radius: 1rem;
         margin: -7rem 1rem -7rem 0.5rem;
         padding: 1rem;
+    }
+
+    .playing-game {
+        width: auto;
+        height: 40.1rem;
+        margin: auto auto;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    div input {
+        font-size: 1rem;
+    }
+
+    #lobby .lobby-buttons button {
+        font-size: 1rem;
+    }
+
+    .board {
+        width: auto;
+    }
+
+    h1 {
+        color: green;
+        font-size: 2rem;
     }
 
     h2 {
@@ -292,7 +319,7 @@ div[data-idx="5"] {
 
     #back-button {
         margin-top: 2rem;
-        padding: 1rem 5rem;
+        padding: 1rem 0;
     }
 
     /*-------------Horizontal--------------*/
@@ -409,7 +436,8 @@ input {
 #lobby button {
     font-size: 3rem;
     background-color: yellow;
-    color: rgb(14, 14, 58);;
+    color: rgb(14, 14, 58);
+    ;
 
     padding: 2rem 3rem;
 
