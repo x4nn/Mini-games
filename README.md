@@ -22,6 +22,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `2.1.1` added firebase (thx kyano)
 > - `2.2` added multilayer for TTT
 > - `2.2.1` more responsive + no username bug fixed
+> - `2.2.2` removed border of cells TTT
  
 > ### GAMES
 >

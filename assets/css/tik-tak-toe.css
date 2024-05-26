@@ -49,7 +49,6 @@ h2 {
 }
 
 .cell {
-    border: 1px solid black;
     box-sizing: border-box;
     text-align: center;
     padding: 42%;
