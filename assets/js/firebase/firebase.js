@@ -1,5 +1,3 @@
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyDFMRm76FrNOQ78pMB-rMcTDmWygs4wNDA",
     databaseURL: "https://mini-games-dbmn-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -31,6 +29,8 @@ function AddNewGame(game, gameName, initPlayer, code) {//works
     firebase.database().ref(`mini-games/data/${game}/${code}`).set({
         gameName: gameName,
 
+        board: createBoard(),
+
         players: [
             {
                 pname: initPlayer,
@@ -41,17 +41,26 @@ function AddNewGame(game, gameName, initPlayer, code) {//works
         gameStatus: 'waiting',
 
         currentMovePlayer: initPlayer
-
-
     });
 }
 
-function updateGame(game, code, gameData){//for now just TTT implementation
+function createBoard() {
+    const res = new Array(3);
+
+    for (let i = 0; i < res.length; i++) {
+        res[i] = new Array(3).fill('null');
+    }
+
+    return res;
+
+}
+
+function updateGame(game, code, gameData) {//for now just TTT implementation
     firebase.database().ref(`mini-games/data/${game}/${code}`).set(gameData);
 }
 
-function deleteGame(game, code) { //works
-    const gameRef = db.ref(`mini-games/data/${game}/${code}`); // Replace 'gameId' with the actual ID
+function deleteGame(game, code) {
+    const gameRef = db.ref(`mini-games/data/${game}/${code}`);
 
     gameRef.remove()
         .then(() => {
