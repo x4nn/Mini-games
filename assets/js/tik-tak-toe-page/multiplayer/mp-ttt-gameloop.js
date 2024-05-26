@@ -42,8 +42,17 @@ function move(e) {
     e.preventDefault();
     console.log('moved');
 
-    const game =  JSON.parse(sessionStorage.getItem('data')).data[GAME][sessionStorage.getItem('code')];
+    if (clickedOnEmptySquare(e.target)) {
+        console.log('empty');
+        // renderLetter(e.target, getLetterClass(movingPlayer));
+        // updateBoard(e.target.dataset.idx);
+        // updateWinner();
 
+        // switchMovingPlayer(false);
+        // renderCurrentPlayer();
+    }
+
+    const game =  JSON.parse(sessionStorage.getItem('data')).data[GAME][sessionStorage.getItem('code')];
     const players = JSON.parse(sessionStorage.getItem('data')).data[GAME][sessionStorage.getItem('code')].players;
     const nextPlayer = getNextPlayer(players);
 
@@ -51,6 +60,10 @@ function move(e) {
 
     Firebase.updateGame(GAME, sessionStorage.getItem('code'), game);
     // gameloop();
+}
+
+function clickedOnEmptySquare(square) {
+    return square.classList.contains('cell') && !square.classList.contains('X') && !square.classList.contains('O');
 }
 
 function getNextPlayer(players){

@@ -102,6 +102,7 @@ function joinGame(code){
 
     const thisUser = {
         pname: USERNAME,
+        pion: 'O',
         status: 'playing'
     };
 
