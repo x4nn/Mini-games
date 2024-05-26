@@ -2,6 +2,7 @@ import * as Firebase from "../../firebase/firebase.js";
 import { deleteFromStorage, generateRandomCode, loadFromStorage, saveToStorage, toggleHidden } from "../../util.js";
 
 const GAME = 'tiktaktoe';
+let GAME_CODE = null;
 const USERNAME = JSON.parse(sessionStorage.getItem('username'));
 
 initMultiPlayer();
@@ -47,9 +48,12 @@ function bindEvents() {
 
             const currentPage = e.target.parentElement.parentElement;
 
+            console.log(e.target);
+
             navigateTo(currentPage, nextSection);
 
-            waitForStart(code, currentPage);
+            GAME_CODE = code;
+            waitForStart(document.querySelector('#wfp'));
         }
 
     });
@@ -75,15 +79,17 @@ function startGame(){
     console.log('started');
 }
 
-function waitForStart(code, currentPage){
+function waitForStart(currentPage){
     Firebase.getData().then(data => {
-        const gameInfo = data.data[GAME][code];
+        // console.log('current page:', currentPage);
+
+        const gameInfo = data.data[GAME][GAME_CODE];
 
         if (gameInfo.gameStatus === 'started') {
             navigateTo(currentPage, 'playing-game');
             startGame();
         } else {
-            setTimeout(waitForStart, 1000);
+            setTimeout(waitForStart(currentPage), 1000);
         }
 
     });
