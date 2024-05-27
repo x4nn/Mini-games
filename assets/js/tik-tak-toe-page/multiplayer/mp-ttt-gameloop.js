@@ -21,7 +21,6 @@ function disableMove() {
     });
 }
 
-///data.data.tiktaktoe[code]: da is de game info
 function gameloop() {
     Firebase.getData().then(data => {
         sessionStorage.setItem('data', JSON.stringify(data));

@@ -36,4 +36,12 @@ function toggleHidden(element){
     element.classList.toggle('hidden');
 }
 
-export { getRandomNumber, getRandomListItem, saveToStorage, loadFromStorage,  deleteFromStorage, toggleHidden, generateRandomCode };
+function navigateTo(current, next){
+    toggleHidden(current);
+
+    const nextElem = document.querySelector(`#${next}`);
+
+    toggleHidden(nextElem);
+}
+
+export { navigateTo, getRandomNumber, getRandomListItem, saveToStorage, loadFromStorage,  deleteFromStorage, toggleHidden, generateRandomCode };

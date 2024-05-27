@@ -1,16 +1,17 @@
 import * as Firebase from "../../firebase/firebase.js";
-import { deleteFromStorage, generateRandomCode, loadFromStorage, saveToStorage, toggleHidden } from "../../util.js";
-import { startGame } from "./mp-ttt-gameloop.js";
+import * as Utils from "../../util.js";
+import * as Gameloop from "./mp-ttt-gameloop.js";
+import {host} from "./host/host.js";
 
 const GAME = 'tiktaktoe';
-let GAME_CODE = null;
+// let GAME_CODE = null;
 const USERNAME = JSON.parse(sessionStorage.getItem('username'));
-const waitinPage = document.querySelector('#wfp');
+// const waitinPage = document.querySelector('#wfp');
 
 initMultiPlayer();
 
 function initMultiPlayer() {
-    saveToStorage('state', 'NP');
+    Utils.saveToStorage('state', 'NP');
     bindEvents();
     setupTTT();
     updateData();
@@ -19,7 +20,7 @@ function initMultiPlayer() {
 
 function updateData(){
     getData();
-    if (loadFromStorage('state') === 'NP') {
+    if (Utils.loadFromStorage('state') === 'NP') {
         setTimeout(updateData, 2000);
     }
 }
@@ -32,36 +33,12 @@ function setupTTT(){
 }
 
 function bindEvents() {
-    document.querySelector('.host').addEventListener('click', (e) => {
-        e.preventDefault();
-
-        deleteFromStorage('state');
-
-        if (isReadyToPlay()) {
-            const gameName = document.querySelector('#gamename').value;
-            const name = USERNAME;
-            const code = generateRandomCode(name, gameName).toLowerCase();
-
-            Firebase.AddNewGame(GAME, gameName, name, code);
-
-            const nextSection = e.target.dataset.next;
-
-            renderCode(code);
-
-            const currentPage = e.target.parentElement.parentElement;
-
-            navigateTo(currentPage, nextSection);
-
-            GAME_CODE = code;
-            waitForStart();
-        }
-
-    });
+    document.querySelector('.host').addEventListener('click', host);
 
     document.querySelector('.join').addEventListener('click', (e) => {
         e.preventDefault();
 
-        deleteFromStorage('state');
+        Utils.deleteFromStorage('state');
 
         const data = getData();
         const code = document.querySelector('#gamename').value;
@@ -76,29 +53,27 @@ function bindEvents() {
     });
 }
 
-function waitForStart() {
-    Firebase.getData().then(data => {
-        // console.log('current page:', currentPage);
-
-        const gameInfo = data.data[GAME][GAME_CODE];
-
-        if (gameInfo.gameStatus === 'started') {
-            navigateTo(waitinPage, 'playing-game');
-            sessionStorage.setItem('code', GAME_CODE);
-            updateData();
-            startGame();
-        } else {
-            setTimeout(waitForStart, 1000);
-        }
-
-    });
-
-
-}
+// function waitForStart() {
+//     Firebase.getData().then(data => {
+//         // console.log('current page:', currentPage);
+//
+//         const gameInfo = data.data[GAME][GAME_CODE];
+//
+//         if (gameInfo.gameStatus === 'started') {
+//             navigateTo(waitinPage, 'playing-game');
+//             sessionStorage.setItem('code', GAME_CODE);
+//             updateData();
+//             Gameloop.startGame();
+//         } else {
+//             setTimeout(waitForStart, 1000);
+//         }
+//
+//     });
+// }
 
 function joinGame(code){
 
-    const game = loadFromStorage('data').data[GAME][code];
+    const game = Utils.loadFromStorage('data').data[GAME][code];
 
     const thisUser = {
         pname: USERNAME,
@@ -114,10 +89,10 @@ function joinGame(code){
 
     Firebase.updateGame(GAME, code, game);
 
-    navigateTo(document.querySelector('#lobby'), 'playing-game');
+    Utils.navigateTo(document.querySelector('#lobby'), 'playing-game');
 
     updateData();
-    setTimeout(startGame, 3000);
+    setTimeout(Gameloop.startGame, 3000);
 }
 
 function renderNonExistingGameError(){
@@ -137,31 +112,32 @@ function gameExists(data, code) {
     return false;
 }
 
-function renderCode(code){
-    const $span = document.querySelector('#code');
-    $span.innerHTML = code;
-}
+// function renderCode(code){
+//     const $span = document.querySelector('#code');
+//     $span.innerHTML = code;
+// }
 
-function isReadyToPlay() {
-    return document.querySelector('#gamename').value !== '';
-}
+// function isReadyToPlay() {
+//     return document.querySelector('#gamename').value !== '';
+// }
 
 function getData(){
     putDataInStorage();
-    return loadFromStorage('data');
+    return Utils.loadFromStorage('data');
 }
 
 function putDataInStorage(){
     Firebase.getData().then(data => {
-        deleteFromStorage('data');
-        saveToStorage('data', data);
+        Utils.deleteFromStorage('data');
+        Utils.saveToStorage('data', data);
     });
 }
 
-function navigateTo(current, next){
-    toggleHidden(current);
-
-    const nextElem = document.querySelector(`#${next}`);
-
-    toggleHidden(nextElem);
-}
+// function navigateTo(current, next){
+//     Utils.toggleHidden(current);
+//
+//     const nextElem = document.querySelector(`#${next}`);
+//
+//     Utils.toggleHidden(nextElem);
+// }
+export {updateData};
