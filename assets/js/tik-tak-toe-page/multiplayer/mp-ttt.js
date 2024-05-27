@@ -1,12 +1,9 @@
 import * as Firebase from "../../firebase/firebase.js";
 import * as Utils from "../../util.js";
-import * as Gameloop from "./mp-ttt-gameloop.js";
-import {host} from "./host/host.js";
+import * as Host from "./join-host/host.js";
+import * as Join from "./join-host/join.js";
 
 const GAME = 'tiktaktoe';
-// let GAME_CODE = null;
-const USERNAME = JSON.parse(sessionStorage.getItem('username'));
-// const waitinPage = document.querySelector('#wfp');
 
 initMultiPlayer();
 
@@ -15,7 +12,6 @@ function initMultiPlayer() {
     bindEvents();
     setupTTT();
     updateData();
-    console.log(getData());
 }
 
 function updateData(){
@@ -33,93 +29,10 @@ function setupTTT(){
 }
 
 function bindEvents() {
-    document.querySelector('.host').addEventListener('click', host);
+    document.querySelector('.host').addEventListener('click', Host.host);
 
-    document.querySelector('.join').addEventListener('click', (e) => {
-        e.preventDefault();
-
-        Utils.deleteFromStorage('state');
-
-        const data = getData();
-        const code = document.querySelector('#gamename').value;
-
-        if (gameExists(data, code)) {
-            sessionStorage.setItem('code', code);
-            joinGame(code);
-        } else {
-            renderNonExistingGameError();
-        }
-
-    });
+    document.querySelector('.join').addEventListener('click', Join.join);
 }
-
-// function waitForStart() {
-//     Firebase.getData().then(data => {
-//         // console.log('current page:', currentPage);
-//
-//         const gameInfo = data.data[GAME][GAME_CODE];
-//
-//         if (gameInfo.gameStatus === 'started') {
-//             navigateTo(waitinPage, 'playing-game');
-//             sessionStorage.setItem('code', GAME_CODE);
-//             updateData();
-//             Gameloop.startGame();
-//         } else {
-//             setTimeout(waitForStart, 1000);
-//         }
-//
-//     });
-// }
-
-function joinGame(code){
-
-    const game = Utils.loadFromStorage('data').data[GAME][code];
-
-    const thisUser = {
-        pname: USERNAME,
-        pion: 'O',
-        status: 'playing'
-    };
-
-    game.gameStatus = 'started';
-
-    game.players[0].status = 'playing';
-    game.players.push(thisUser);
-
-
-    Firebase.updateGame(GAME, code, game);
-
-    Utils.navigateTo(document.querySelector('#lobby'), 'playing-game');
-
-    updateData();
-    setTimeout(Gameloop.startGame, 3000);
-}
-
-function renderNonExistingGameError(){
-    const $label = document.querySelector('#lobby label');
-    $label.classList.remove('hidden');
-}
-
-function gameExists(data, code) {
-    const games = data.data[GAME];
-
-    for (const name in games) {
-        if (name === code) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-// function renderCode(code){
-//     const $span = document.querySelector('#code');
-//     $span.innerHTML = code;
-// }
-
-// function isReadyToPlay() {
-//     return document.querySelector('#gamename').value !== '';
-// }
 
 function getData(){
     putDataInStorage();
@@ -133,11 +46,4 @@ function putDataInStorage(){
     });
 }
 
-// function navigateTo(current, next){
-//     Utils.toggleHidden(current);
-//
-//     const nextElem = document.querySelector(`#${next}`);
-//
-//     Utils.toggleHidden(nextElem);
-// }
-export {updateData};
+export {updateData, GAME};
