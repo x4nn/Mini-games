@@ -25,6 +25,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `2.2.2` removed border of cells TTT
 > - `2.2.3` made first player to move random TTT
 > - `2.3` gave home page new look for more context with online or offline mini game
+> - `2.3.1` should be better for phone
  
 > ### GAMES
 >
