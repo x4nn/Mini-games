@@ -15,7 +15,6 @@
     border-color: yellow;
 }
 
-
 /*---------------------------------GREY-HOME-------------------------------------*/
 
 .theme-grey-bg {
@@ -32,6 +31,60 @@
 
 .theme-grey-border {
     border-color: black;
+}
+
+/*---------------------------------RED-HOME-------------------------------------*/
+
+.theme-red-bg {
+    background-color: rgb(214, 14, 14);
+}
+
+.theme-red-not-bg {
+    color: rgb(50, 84, 50);
+}
+
+.theme-red-game-icons {
+    filter: hue-rotate(-115.5deg) invert(100%);
+}
+
+.theme-red-border {
+    border-color: rgb(50, 84, 50);
+}
+
+/*---------------------------------ORANGE-HOME-------------------------------------*/
+
+.theme-black-bg {
+    background-color: black;
+}
+
+.theme-black-not-bg {
+    color: red;
+}
+
+.theme-black-game-icons {
+    filter: hue-rotate(115deg) invert(100%);
+}
+
+.theme-black-border {
+    border-color: red;
+}
+
+/*---------------------------------CYAN-HOME-------------------------------------*/
+
+.theme-cyan-bg {
+    background-color: rgb(64, 224, 208);
+}
+
+.theme-cyan-not-bg {
+    color: rgb(113, 0, 236);
+}
+
+.theme-cyan-game-icons {
+    filter: hue-rotate(28deg) invert(100%);
+}
+
+.theme-cyan-border {
+    border-color: rgb(113, 0, 236);
 }
 
 /*///----------------------------------------------------------------------------------------------*/

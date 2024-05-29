@@ -13,6 +13,27 @@ const themes = [
         not_bg: 'theme-grey-not-bg',
         icon: 'theme-grey-game-icons',
         border: 'theme-grey-border'
+    },
+    {
+        theme: 'red',
+        bg: 'theme-red-bg',
+        not_bg: 'theme-red-not-bg',
+        icon: 'theme-red-game-icons',
+        border: 'theme-red-border'
+    },
+    {
+        theme: 'black',
+        bg: 'theme-black-bg',
+        not_bg: 'theme-black-not-bg',
+        icon: 'theme-black-game-icons',
+        border: 'theme-black-border'
+    },
+    {
+        theme: 'cyan',
+        bg: 'theme-cyan-bg',
+        not_bg: 'theme-cyan-not-bg',
+        icon: 'theme-cyan-game-icons',
+        border: 'theme-cyan-border'
     }
 ];
 
@@ -46,7 +67,6 @@ function getIdxNextTheme(idxCurTheme) {
 }
 
 function toggleTheme(theme) {
-    //delete eerst de andere theme door in de classlist te kijken of er een theme class in zit in die te verwijderen
     clearOldTheme();
 
     toggleBG(theme.bg);
@@ -56,7 +76,6 @@ function toggleTheme(theme) {
 }
 
 function clearOldTheme() {
-    //body, input, h1, p(all), section div div(all), button
     const $body = document.querySelector('body');
     const $input = document.querySelector('input');
     const $h1 = document.querySelector('h1');
@@ -101,6 +120,7 @@ function toggleBG(bg) {
 }
 
 function toggleNBG(not_bg) {
+    document.querySelector('input').classList.add(not_bg);
     document.querySelector('h1').classList.add(not_bg);
     document.querySelectorAll('p').forEach(p => {
         p.classList.add(not_bg);

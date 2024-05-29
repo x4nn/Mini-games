@@ -30,6 +30,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `2.5` can't turn more than 2 cards per turn
 > - `2.5.1` github bug
 > - `2.6` added new theme (only home page and no return)
+> - `2.6.1` added themes to index page
  
 > ### GAMES
 >
