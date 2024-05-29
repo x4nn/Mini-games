@@ -41,6 +41,12 @@ p {
     width: fit-content;
 }
 
+.playing-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 h1 {
     color: yellow;
     font-size: 2rem;
@@ -62,6 +68,18 @@ h2 {
     width: fit-content;
 
     margin: 0 auto;
+}
+
+#back-button {
+    color: rgb(14, 14, 58);
+    text-decoration: none;
+
+    font-size: 2.5rem;
+    background-color: yellow;
+
+    padding: 1.5rem 5rem;
+    border-radius: 20px;
+    margin-top: 2rem;
 }
 
 .card {
@@ -106,15 +124,15 @@ h2 {
     display: none;
 }
 
-#p1-pairs-found h2{
+#p1-pairs-found h2 {
     color: green;
 }
 
-#p2-pairs-found h2{
+#p2-pairs-found h2 {
     color: red;
 }
 
-#p2-pairs-found{
+#p2-pairs-found {
     margin-left: 10rem;
 }
 
