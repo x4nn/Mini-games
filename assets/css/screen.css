@@ -226,4 +226,8 @@ a:hover {
         padding: 0.75rem 0;
     }
 
+    section {
+        width: 24rem;
+    }
+
 }
