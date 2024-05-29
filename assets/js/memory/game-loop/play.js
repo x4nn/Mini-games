@@ -132,8 +132,6 @@ function twoCardsFlipped(){
         }
     });
 
-    console.log(flipped);
-
     return flipped === 2;
 }
 
@@ -169,7 +167,7 @@ function coverAllCards(){
 }
 
 function gameOver(){
-    const $board = document.querySelector('.board-container');
+    const $board = document.querySelector('.playing-game');
     const $infoMovingPlayer = document.querySelector('.info-container')
     const $gameOver = document.querySelector('.game-over');
 

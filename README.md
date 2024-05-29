@@ -45,4 +45,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > ### Tik Tak Toe
 > ## To add
 > - Line when winner
-> - random player to start instead of always the creator of game
+
+> ### Memory
+> ## To add
+> - responsive for phone

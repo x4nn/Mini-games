@@ -104,7 +104,7 @@ h2 {
 
 .game-over {
     display: grid;
-    /* grid-template-rows: 1fr 1fr; */
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     justify-content: space-around;
     justify-content: space-around;
@@ -149,4 +149,14 @@ button:hover {
     background-color: rgb(14, 14, 58);
     border: 0.1rem solid yellow;
     color: yellow;
+}
+
+@media screen and (max-width: 768px) {
+    /*PHONE*/
+    #board {
+        grid-template-columns: repeat(4, 4rem);
+        grid-template-rows: repeat(4, 4rem);
+        grid-gap: 1rem;
+    }
+
 }
