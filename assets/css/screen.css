@@ -24,7 +24,7 @@ body {
     background-color: rgb(14, 14, 58);
     width: 100%;
 
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #version {
@@ -66,16 +66,25 @@ h1 {
 }
 
 section {
-    /*outline: 0.25rem solid white;*/
+    width: 43rem;
+    margin: 8rem auto 0 auto;
 
-    width: 17rem;
-    height: 20rem;
-    margin: 10rem auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) repeat(2, 0.5fr);
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: flex-start;
+    justify-items: center;
+}
+
+section p {
+    color: yellow;
+    font-size: 2.5rem;
+    /* padding: 1rem 2rem; */
+    margin-bottom: 2rem;
+    border-bottom: 0.2rem solid yellow;
+}
+
+.stretch {
+    grid-column: span 2;
 }
 
 input,
@@ -111,12 +120,26 @@ a {
     margin: 0.5rem;
 
     transition: transform 0.2s;
-    /* Animation duration */
+}
+
+.lean-right, .lean-left {
+    outline-color: red;
+}
+
+.lean-right {
+    justify-self: end;
+}
+
+.lean-left {
+    justify-self: start;
+}
+
+.invis {
+    outline: none;
 }
 
 a:hover {
     transform: scale(1.5);
-    /* 150% zoom */
 }
 
 /*---------------The symbols---------------*/
