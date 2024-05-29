@@ -80,10 +80,10 @@ function clearOldTheme() {
     const $input = document.querySelector('input');
     const $h1 = document.querySelector('h1');
     const $button = document.querySelector('button');
-    const $allP = document.querySelectorAll('p');
-    const $allDiv = document.querySelectorAll('section div div');
+    const $allTitleP = document.querySelectorAll('.section-title');
+    const $allDiv = document.querySelectorAll('section div div div');
 
-    clearAll([$body, $input, $h1, $button, $allP, $allDiv]);
+    clearAll([$body, $input, $h1, $button, $allTitleP, $allDiv]);
 
 }
 
@@ -122,13 +122,13 @@ function toggleBG(bg) {
 function toggleNBG(not_bg) {
     document.querySelector('input').classList.add(not_bg);
     document.querySelector('h1').classList.add(not_bg);
-    document.querySelectorAll('p').forEach(p => {
+    document.querySelectorAll('.section-title').forEach(p => {
         p.classList.add(not_bg);
     });
 }
 
 function toggleICONS(icon) {
-    document.querySelectorAll('section div div').forEach(div => {
+    document.querySelectorAll('section div div div').forEach(div => {
         div.classList.add(icon);
     })
     document.querySelector('button').classList.add(icon);
@@ -136,7 +136,7 @@ function toggleICONS(icon) {
 
 function toggleBORDERS(border) {
     document.querySelector('input').classList.add(border);
-    document.querySelectorAll('p').forEach(p => {
+    document.querySelectorAll('.section-title').forEach(p => {
         p.classList.add(border);
     });
 }

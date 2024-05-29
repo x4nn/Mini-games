@@ -80,11 +80,13 @@ section {
     justify-items: center;
 }
 
-
 .games div {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.game-name {
     color: yellow;
 }
 
@@ -140,7 +142,7 @@ a {
     outline-color: red;
 }
 
-a:hover {
+.icon:hover {
     transform: scale(1.5);
 }
 
