@@ -45,6 +45,7 @@ The goal of this project is to have a page full of mini games that you can play.
 
 > ### Extra features
 > - dark/light mode
+> - name of games onder the icons, als je over icon hovert da de gamename er onder verschijnt 
 
 > ### Tik Tak Toe
 > ## To add

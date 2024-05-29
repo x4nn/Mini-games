@@ -80,12 +80,20 @@ section {
     justify-items: center;
 }
 
+
+.games div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: yellow;
+}
+
 .temp-solo-stretch-2 {
     grid-column: span 2;
 }/* TODO delete */
 
 
-section p {
+.section-title {
     color: yellow;
     font-size: 2.5rem;
     margin-bottom: 2rem;
