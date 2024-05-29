@@ -23,6 +23,7 @@ The goal of this project is to have a page full of mini games that you can play.
 > - `2.2` added multilayer for TTT
 > - `2.2.1` more responsive + no username bug fixed
 > - `2.2.2` removed border of cells TTT
+> - `2.2.3` made first player to move random TTT
  
 > ### GAMES
 >
@@ -36,10 +37,9 @@ The goal of this project is to have a page full of mini games that you can play.
 > - soort puzzel waarbij je de stukjes kan slepen?
 
 > ### Extra features
-> - `add admin panel for ex. deleting all games`
 > - dark/light mode
 
 > ### Tik Tak Toe
 > ## To add
 > - Line when winner
-> - choosing a name per player
+> - random player to start instead of always the creator of game

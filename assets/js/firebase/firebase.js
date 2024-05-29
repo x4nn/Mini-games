@@ -41,7 +41,7 @@ function AddNewGame(game, gameName, initPlayer, code) {//works
 
         status: 'waiting',
 
-        currentMovePlayer: initPlayer
+        currentMovePlayer: 'null'
     });
 }
 

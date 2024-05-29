@@ -1,4 +1,5 @@
-import { gameHandler} from "./utils/handler.js";
+import * as GameHandler from "./main-page/handler.js";
+
 
 init();
 
@@ -8,7 +9,7 @@ function init(){
 
 function bindEvents(){
     document.querySelectorAll('a').forEach($article => {
-        $article.addEventListener('click', gameHandler);
+        $article.addEventListener('click', GameHandler.gameHandler);
     });
 
     document.querySelector('#rainbow').addEventListener('click', (e) => e.preventDefault() );

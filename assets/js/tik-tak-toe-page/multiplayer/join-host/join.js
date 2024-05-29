@@ -38,6 +38,7 @@ function joinGame(code){
     game.players[0].status = 'playing';
     game.players.push(thisUser);
 
+    game.currentMovePlayer = Utils.getRandomListItem(game.players).pname;
 
     Firebase.updateGame(TTT.GAME, code, game);
 
