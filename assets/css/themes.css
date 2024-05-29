@@ -1,6 +1,4 @@
-/* 
-body
-*/
+/*---------------------------------DEFAULT-HOME-------------------------------------*/
 .theme-dark-blue-bg {
     background-color: rgb(14, 14, 58);
 }
@@ -9,40 +7,31 @@ body
     color: yellow;
 }
 
-
-/*-----------------------------------------------------------------------*/
-
-/* 
-body
-input 
-*/
-
-.theme-grey-bg {
-    background-color: lightgray;
+.theme-dark-blue-game-icons {
+    filter: none;
 }
 
-/* 
-h1
-p
-*/
+.theme-dark-blue-border {
+    border-color: yellow;
+}
+
+
+/*---------------------------------GREY-HOME-------------------------------------*/
+
+.theme-grey-bg {
+    background-color: rgb(191, 187, 187);
+}
 
 .theme-grey-not-bg {
     color: black;
 }
 
-/* 
-section div div
-*/
-
 .theme-grey-game-icons {
     filter: hue-rotate(180deg) invert(100%);
 }
 
-/*
-input
-div p
-*/
-
 .theme-grey-border {
     border-color: black;
 }
+
+/*///----------------------------------------------------------------------------------------------*/

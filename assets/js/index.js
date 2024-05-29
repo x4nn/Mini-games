@@ -13,7 +13,7 @@ function bindEvents(){
         $article.addEventListener('click', GameHandler.gameHandler);
     });
 
-    document.querySelector('#theme').addEventListener('click', Theme.nextTheme);
+    document.querySelector('#theme').addEventListener('click', Theme.nextThemeHome);
     // document.querySelector('#rainbow').addEventListener('click', (e) => e.preventDefault() );
 }
 
