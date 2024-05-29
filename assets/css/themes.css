@@ -87,4 +87,22 @@
     border-color: rgb(113, 0, 236);
 }
 
+/*---------------------------------WHITE-HOME-------------------------------------*/
+
+.theme-white-bg {
+    background-color: white;
+}
+
+.theme-white-not-bg {
+    color: red;
+}
+
+.theme-white-game-icons {
+    filter: hue-rotate(105deg) invert(100%);
+}
+
+.theme-white-border {
+    border-color: red;
+}
+
 /*///----------------------------------------------------------------------------------------------*/

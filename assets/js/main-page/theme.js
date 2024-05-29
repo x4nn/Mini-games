@@ -34,6 +34,13 @@ const themes = [
         not_bg: 'theme-cyan-not-bg',
         icon: 'theme-cyan-game-icons',
         border: 'theme-cyan-border'
+    },
+    {
+        theme: 'white',
+        bg: 'theme-white-bg',
+        not_bg: 'theme-white-not-bg',
+        icon: 'theme-white-game-icons',
+        border: 'theme-white-border'
     }
 ];
 
