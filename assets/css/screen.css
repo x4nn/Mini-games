@@ -69,22 +69,27 @@ section {
     width: 43rem;
     margin: 8rem auto 0 auto;
 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr) repeat(2, 0.5fr);
+    display: flex;
+    justify-content: space-around;
+}
 
+.games {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-items: center;
 }
+
+.temp-solo-stretch-2 {
+    grid-column: span 2;
+}/* TODO delete */
+
 
 section p {
     color: yellow;
     font-size: 2.5rem;
-    /* padding: 1rem 2rem; */
     margin-bottom: 2rem;
     border-bottom: 0.2rem solid yellow;
-}
-
-.stretch {
-    grid-column: span 2;
+    width: 100%;
 }
 
 input,
@@ -122,20 +127,8 @@ a {
     transition: transform 0.2s;
 }
 
-.lean-right, .lean-left {
+#soon a {
     outline-color: red;
-}
-
-.lean-right {
-    justify-self: end;
-}
-
-.lean-left {
-    justify-self: start;
-}
-
-.invis {
-    outline: none;
 }
 
 a:hover {

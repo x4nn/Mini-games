@@ -1,16 +1,4 @@
-/*
-elke speler kan 2 kaarten omdraaien per beurt
-
-click 1: kaart wordt omgedraaid
-click 2: kaart wordt omgedraaid
-            er wordt gechecked of het 2 dezelfde kaarten zijn
-                JA: mag nog eens
-                NEE: volgende aan de beurt
-
-Mss while game is not won: check wie er aan de beurt is en laat hem zijn 2 zetten doen
-*/
-
-import { TILE_AMT } from "../memory.js";
+import { TILE_AMT, bindEvents, unbindEvents } from "../memory.js";
 
 const playersData = {
     players: {
@@ -52,26 +40,13 @@ function turnHandler(e) {
     turnCard(e.target);
     if (twoCardsFlipped()) {
 
-
-        //check of ze zelfde zijn
-            //JA: voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
-            //NEE: beurt aan volgende
-
+        unbindEvents();
 
         if (isPair()) {
-
-
-            //voeg ze toe aan gevonden dingen en mag opnieuw beurt en kaarten niet omdraaien
-            //voeg ook toe aan data dattie found is
-
-
-            console.log('pair');
-
-            //TODO fix dat de count omhoog gaat na vinden van pair 
-
-            updatePairsFoundPlayer();//todo
+            updatePairsFoundPlayer();
             markAsFound();
             checkForWin();
+            bindEvents();
         } else {
 
 
@@ -80,17 +55,18 @@ function turnHandler(e) {
 
             setTimeout(coverAllCards, 1500);
         }
+
         
     }
 }
 
-function updatePairsFoundPlayer(){
+function updatePairsFoundPlayer() {
     const currentMovingPlayer = playersData.currentMovingPlayer;
 
     playersData.players[currentMovingPlayer].foundCards++;
 }
 
-function checkForWin(){
+function checkForWin() {
     const allSquares = document.querySelectorAll('[alt="card"]');
     let counter = 0;
     allSquares.forEach(img => {
@@ -104,13 +80,13 @@ function checkForWin(){
     });
 }
 
-function isPair(){
+function isPair() {
     const flippedCards = document.querySelectorAll('.up');
 
     return flippedCards[0].dataset.name === flippedCards[1].dataset.name;
 }
 
-function markAsFound(){
+function markAsFound() {
     const flippedCards = document.querySelectorAll('.up');
 
     flippedCards[0].dataset.state = 'found';
@@ -122,7 +98,7 @@ function markAsFound(){
     flippedCards[1].classList.add(playersData.currentMovingPlayer);
 }
 
-function twoCardsFlipped(){
+function twoCardsFlipped() {
     const allLocs = document.querySelectorAll('.card');
     let flipped = 0;
 
@@ -135,14 +111,14 @@ function twoCardsFlipped(){
     return flipped === 2;
 }
 
-function isFlipped(img){
+function isFlipped(img) {
 
     return img.classList.contains('up') && img.dataset.state === 'not-found';
 }
 
-function turnCard(target){
+function turnCard(target) {
     const cards = target.parentElement.children;
-    
+
     for (const img of cards) {
         img.classList.toggle('hidden');
         if (img.alt === 'card') {
@@ -151,7 +127,7 @@ function turnCard(target){
     }
 }
 
-function coverAllCards(){
+function coverAllCards() {
     const allLocs = document.querySelectorAll('.card');
 
     allLocs.forEach(div => {
@@ -164,9 +140,10 @@ function coverAllCards(){
         }
     });
     switchMovingPlayer();
+    bindEvents();
 }
 
-function gameOver(){
+function gameOver() {
     const $board = document.querySelector('.playing-game');
     const $infoMovingPlayer = document.querySelector('.info-container')
     const $gameOver = document.querySelector('.game-over');
@@ -179,7 +156,7 @@ function gameOver(){
 
 }
 
-function renderFoundPairs(){
+function renderFoundPairs() {
     const $p1Pairs = document.querySelector('#p1-pairs-found span');
     const $p2Pairs = document.querySelector('#p2-pairs-found span');
 

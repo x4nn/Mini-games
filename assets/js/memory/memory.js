@@ -33,5 +33,10 @@ function bindEvents(){
     document.querySelector('.again').addEventListener('click', () => window.location.reload());
     document.querySelector('.home').addEventListener('click', () => window.location.href = 'index');
 }
+function unbindEvents(){
+    document.querySelectorAll('img[alt="cover"]').forEach(img => {
+        img.removeEventListener('click', turnHandler);
+    });
+}
 
-export { refreshBoard, TILE_AMT };
+export { refreshBoard, TILE_AMT, unbindEvents, bindEvents };
