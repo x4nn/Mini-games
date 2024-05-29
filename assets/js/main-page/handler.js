@@ -3,19 +3,24 @@ import { loadFromStorage, saveToStorage, toggleHidden } from "../util.js";
 function gameHandler(e) {
     e.preventDefault();
 
-    if (isReadyToPlay()) {
-        const game = e.target.id;
-        const username = document.querySelector('#username').value;
-        saveToStorage('username', username);
-
-        if (game === 'tik-tak-toe') {
-            window.location.href = 'tik-tak-toe';
-        } else if (game === 'memory') {
-            window.location.href = 'memory';
+    
+    const game = e.target.id;
+    if (e.target.parentElement.parentElement.id === 'online') {
+        if (isReadyToPlay()) {
+            const username = document.querySelector('#username').value;
+            saveToStorage('username', username);
+    
+            if (game === 'tik-tak-toe') {
+                window.location.href = 'tik-tak-toe';
+            }
+    
+        }else {
+            renderNoUserNameError();
         }
+    }
 
-    } else {
-        renderNoUserNameError();
+    if (game === 'memory') {
+        window.location.href = 'memory';
     }
 
 

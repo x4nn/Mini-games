@@ -1,0 +1,48 @@
+/* 
+body
+*/
+.theme-dark-blue-bg {
+    background-color: rgb(14, 14, 58);
+}
+
+.theme-dark-blue-not-bg {
+    color: yellow;
+}
+
+
+/*-----------------------------------------------------------------------*/
+
+/* 
+body
+input 
+*/
+
+.theme-grey-bg {
+    background-color: lightgray;
+}
+
+/* 
+h1
+p
+*/
+
+.theme-grey-not-bg {
+    color: black;
+}
+
+/* 
+section div div
+*/
+
+.theme-grey-game-icons {
+    filter: hue-rotate(180deg) invert(100%);
+}
+
+/*
+input
+div p
+*/
+
+.theme-grey-border {
+    border-color: black;
+}

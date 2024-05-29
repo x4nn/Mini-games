@@ -1,4 +1,5 @@
 import * as GameHandler from "./main-page/handler.js";
+import * as Theme from "./main-page/theme.js";
 
 
 init();
@@ -12,6 +13,7 @@ function bindEvents(){
         $article.addEventListener('click', GameHandler.gameHandler);
     });
 
-    document.querySelector('#rainbow').addEventListener('click', (e) => e.preventDefault() );
+    document.querySelector('#theme').addEventListener('click', Theme.nextTheme);
+    // document.querySelector('#rainbow').addEventListener('click', (e) => e.preventDefault() );
 }
 
